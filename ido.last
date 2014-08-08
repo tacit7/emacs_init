@@ -2,87 +2,141 @@
 
 ;; ----- ido-last-directory-list -----
 (
+ ("/Users/umaldonado/repo/haskell/real-world-haskell/" . "ch04/")
+ ("/Users/umaldonado/repo/haskell/" . "real-world-haskell/")
+ ("/Users/umaldonado/repo/geoforce/app/controllers/api/" . "v1/")
+ ("/Users/umaldonado/repo/geoforce/app/controllers/" . "api/")
+ ("/Users/umaldonado/repo/emacs/" . "evil-org-mode/")
+ ("/Users/umaldonado/repo/org-mode/" . "images/")
+ ("/Users/umaldonado/repo/clientintegration/" . "clients/")
+ ("/Users/umaldonado/repo/geoforce/app/" . "workers/")
+ ("/Users/umaldonado/repo/geoforce/" . "app/")
  ("/Users/umaldonado/repo/exercism/ruby/" . "bob/")
  ("/Users/umaldonado/repo/exercism/" . "ruby/")
  ("/Users/umaldonado/Google Drive/" . "org-mode/")
  ("/" . "geoforce/")
  ("/Users/umaldonado/.emacs.d/snippets/yasnippet-snippets/" . "ruby-mode/")
  ("/Users/umaldonado/.emacs.d/snippets/" . "yasnippet-snippets/")
- ("/Users/umaldonado/.emacs.d/" . "snippets/")
- ("/Users/umaldonado/repo/" . "integration/")
- ("/Users/umaldonado/" . ".emacs.d/")
+ ("/Users/umaldonado/.emacs.d/" . "custom/")
+ ("/Users/umaldonado/repo/" . "geoforce/")
+ ("/Users/umaldonado/" . "repo/")
 )
 
 ;; ----- ido-work-directory-list -----
 (
+ #("/Users/umaldonado/repo/geoforce/" 18 22 (face flx-highlight-face))
+ "/Users/"
+ "/Users/umaldonado/repo/org-mode/"
+ "/Users/umaldonado/repo/haskell/real-world-haskell/ch04/"
+ "/Users/umaldonado/repo/geoforce/app/models/"
+ "/Users/umaldonado/.emacs.d/"
+ "/Users/umaldonado/repo/org-mode/images/"
+ "/Users/umaldonado/.emacs.d/custom/"
  "/Users/umaldonado/Google Drive/org-mode/"
  "/Users/umaldonado/Google Drive/"
  "/Users/umaldonado/Google Drive/notes/"
  "/Users/umaldonado/repo/integration/"
- "/Users/umaldonado/repo/geoforce/"
  "/Users/umaldonado/repo/exercism/ruby/bob/"
  "/Users/umaldonado/repo/exercism/ruby/"
  "/Users/umaldonado/"
- "/Users/umaldonado/.emacs.d/"
  "/Users/umaldonado/.emacs.d/.cask/"
  "/Users/umaldonado/gf_delivery_format/"
 )
 
 ;; ----- ido-work-file-list -----
 (
- "gtserialmessageprotocol.gsheet"
- "start.org"
- "tickets.org"
- "tickets"
- "padrino.org"
- "APIs-A-Strategy-Guide.md"
+ "backbone.org"
  "API_notes.org"
- "bob.rb"
- "hello.org"
+ "note-cards.org"
+ "InteractWith.hs"
+ "demo_tag_mech.org"
+ "tag_delivery_options.org"
+ "integration.org"
+ "sprint_planning.org"
+ "tag_reading.rb"
  "init.el"
 )
 
 ;; ----- ido-dir-file-cache -----
 (
- ("/Users/umaldonado/.emacs.d/" (21335 60220 0 0) "snippets/" "projectile.cache" "projectile-bookmarks.eld" "init.el~" "init.el" "init-org.el~" "init-org.el" "ido.last~" "ido.last" "custom/" "Cask~" "Cask" "auto-save-list/" "ac-comphist.dat" "12smartparens.el" ".cask/" "#init.el#" "../" "./")
+ (#("/Users/umaldonado/repo/geoforce/" 18 22 (face flx-highlight-face)) (21466 58781 0 0) "vendor/" "tmp/" "test/" "tags" "server/" "script/" "Result" "README" "Rakefile" "public/" "log/" "lib/" "Gemfile.lock" "Gemfile" "Gem.local" "db/" "config.ru" "config/" "Capfile" "app/" "\\" "31.719," ".ruby-version" ".pryrc" ".gitignore" ".git/" ".DS_Store" "../" "./")
 
- ("/Users/umaldonado/Google Drive/org-mode/" (21335 60310 0 0) "tickets~" "tickets.org" "start.org~" "ruby_interview_questions~" "ruby_interview_questions" "padrino.org" "integration~" "integration.org" "integration" "infinispan.org" "images/" "Icon
-" "archive/" "API_notes.org" ".#integration" "#padrino.org#" "#integration#" "#infinispan.org#" "../" "./")
+ (#("/Users/umaldonado/repo/" 18 22 (face flx-highlight-face)) (21467 45813 0 0) "zshrc/" "xiki/" "vimrc/" "tut/" "tmux-powerline/" "takein.rb" "spice/" "Smyck-Color-Scheme/" "servers/" "scratch.txt" "scratch.rb" "scratch/" "scala/" "Pong-Haskell/" "pg_partman/" "org-mode/" "ops/" "notes/" "ni" "kafka-rb/" "kafka-0.7.2-incubating-src.tgz" "kafka-0.7.2-incubating-src/" "integrationObjects/" "integration/" "hi.txt" "hi.rb" "hi/" "hello.rb" "haskell/" "geoforce_mrd/" "geoforce_chef3/" "geoforce/" "Formater" "fleet/" "exercism/" "emacs/" "dump.rdb" "device-mgmt/" "cruby/" "clients/" "clientintegration/" "bi/" "backbone/" "algorithms/" ".DS_Store" "../" "./")
 
- ("/Users/umaldonado/" (21335 59728 0 0) "VirtualBox VMs/" "Vagrant/" "share/" "repo/" "Public/" "Pictures/" "myScripts/" "Music/" "Movies/" "Library/" "IdeaProjects/" "hs_vimrc.vim" "google\\ Drive/" "Google Drive/" "gf_delivery_format-0.0.1.gem" "gf_delivery_format/" "geoforce_delivery_formats-0.0.1.gem" "Downloads/" "Documents/" "Desktop/" "Applications/" ".zshrc.pre-oh-my-zsh" ".zshrc-e" ".zshrc" ".zsh_history" ".zsh-update" ".zlogin" ".zcompdump-fermata-5.0.2" ".vimrc" ".vimperatorrc" ".vimperator/" ".viminfo.tmp" ".viminfo" ".vim_mru_files" ".vim-fuf-data/" ".vim/" ".vegas/" ".vagrant.d/" ".unite/" ".Trash/" ".tmux.conf" ".taskrc" ".task/" ".subversion/" ".ssh/" ".scala_history" ".sbt/" ".rvm/" ".ruby_inline/" ".rsense" ".rnd" ".psql_history" ".pryrc" ".pry_history" ".profile" ".pip/" ".oh-my-zsh/" ".NERDTreeBookmarks" ".neocomplete/" ".local/" ".lldb-history" ".lesshst" ".key.txt" ".keepassx/" ".ivy2/" ".irb-history" ".inputrc" ".hs_vim" ".hgignore_global" ".guard_history" ".gitconfig" ".ghc/" ".gem/" ".fonts.conf.d/" ".exercism.go" ".emacs.d/" ".editrc" ".DS_Store" ".cups/" ".cpanm/" ".cpan/" ".config/" ".CFUserTextEncoding" ".cabal/" ".bundler/" ".bashrc" ".bash_profile" ".bash_history" ".atom/" ".activator/" "../" "./")
+ ("/Users/umaldonado/" (21469 16941 0 0) "VirtualBox VMs/" "Vagrant/" "tut/" "tmp/" "share/" "scratch.txt" "ruby_spec.rb" "repo/" "Public/" "Pictures/" "parser.rb" "myScripts/" "Music/" "Movies/" "Library/" "Karabiner/" "integClient.rb" "IdeaProjects/" "hs_vimrc.vim" "hello_spec.rb" "hello.rb" "google\\ Drive/" "Google Drive/" "gf_delivery_format-0.0.1.gem" "gf_delivery_format/" "geoforce_delivery_formats-0.0.1.gem" "Downloads/" "Documents/" "Desktop/" "dbext_sql_history.txt" "bin/" "Applications/" ".zshrc" ".zshenv" ".zsh_local.zsh" ".zsh_history" ".zprofile" ".zpreztorc" ".zprezto/" ".zlogout" ".zlogin" ".zhistory" ".zcompdump.zwc" ".zcompdump" ".zcompcache/" ".vimrc" ".vimperatorrc" ".vimperator/" ".viminfo.tmp" ".viminfo" ".vim_mru_files" ".vim-fuf-data/" ".vim/" ".vegas/" ".vagrant.d/" ".unite/" ".Trash/" ".tmux.conf" ".taskrc" ".task/" ".subversion/" ".ssh/" ".scala_history" ".sbt/" ".sage/" ".rvm/" ".ruby_inline/" ".rubocop.yml" ".rsense" ".rnd" ".rediscli_history" ".psql_history" ".pryrc" ".pry_history" ".profile" ".pip/" ".phantomjs/" ".pgpass" ".npm/" ".NERDTreeBookmarks" ".neocomplete/" ".local/" ".lldb-history" ".lesshst" ".key.txt" ".keepassx/" ".javarepl.history" ".ivy2/" ".irb-history" ".inputrc" ".htoprc" ".hs_vim" ".hgignore_global" ".guard_history" ".gitignore" ".gitconfig" ".ghc/" ".gem/" ".fonts.conf.d/" ".exercism.go" ".emacs.d/" ".editrc" ".DS_Store" ".cups/" ".cpanm/" ".cpan/" ".config/" ".coffee_history" ".CFUserTextEncoding" ".cache/" ".cabal/" ".bundler/" ".bashrc" ".bash_profile" ".bash_history" ".atom/" ".activator/" "../" "./")
+
+ ("/Users/" (21309 50966 0 0) "umaldonado/" "Shared/" "ip/" "GFAdmin/" ".localized" "../" "./")
+
+ ("/Users/umaldonado/repo/org-mode/" (21407 11254 0 0) "tickets" "tag_delivery_options.org" "start.org" "sprint_planning.org" "ruby_interview_questions.org" "note-cards.org" "integration.org" "infinispan.org" "images/" "home.org" "demo_tag_mech.org" "backbone.org" "API_notes.org" ".git/" ".DS_Store" ".#cruby.org" ".#blogs.org" "../" "./")
+
+ ("/Users/umaldonado/gf_delivery_format/" (21400 42601 0 0) "tmp/" "test.rb" "tags" "spec/" "rgs[:csv_attrs]) if args[:csv_attrs]" "README.md" "Rakefile" "p { |attr| object.send(attr).to_s }" "LICENSE.txt" "lib/" "Guardfile" "gf_delivery_format.gemspec" "gf_delivery_format-1.0.1.gem" "gf_delivery_format-1.0.0.gem" "Gemfile.lock" "Gemfile" "coverage/" ".rspec" ".gitignore" ".git/" ".DS_Store" "../" "./")
+
+ ("/Users/umaldonado/repo/integration/" (21380 60908 0 0) "vim.log" "test/" "tags" "readme.md" "Rakefile" "public/" "models/" "lib/" "Gemfile.lock" "Gemfile" "db/" "config.ru" "config/" "app/" ".ruby-version" ".idea/" ".gitignore" ".git/" ".components" "../" "./")
+
+ ("/Users/umaldonado/Google Drive/" (21399 3726 0 0) "UrielGMaldonadoPhoneUsage.pdf" "UrielAccidentForm.pdf" "RTMS Checklist.gdoc" "query2.csv" "query1.csv" "pseudo_code.rb" "orgcard.pdf" "org-mode/" "ops_support.rb" "notes/" "module.rb~" "METAPROGRAMMING.rb" "mac vbox sharing.gdoc" "Icon
+" "gtserialmessageprotocol.gsheet" "expense report.gsheet" "employee software time survey.gsheet" "devs/" "device-mgmt setup.gdoc" "DBExt_Admin.vim.gdoc" "books/" "benchmarks.rb" "aw_pgsql_book.pdf" "Absence-Form.doc" ".git/" ".DS_Store" "../" "./")
+
+ ("/Users/umaldonado/.emacs.d/" (21401 55585 0 0) "wombatLight-theme.el" "wombat-theme.el" "url/" "start" "snippets/" "recentf" "README.md" "projectile.cache" "projectile-bookmarks.eld" "places" "notes" "init.el" "ido.last~" "ido.last" "custom/" "Cask" "auto-save-list/" "ac-comphist.dat" "12smartparens.el" ".git/" ".cask/" "../" "./")
+
+ ("/Users/umaldonado/repo/geoforce/app/models/" (21400 28453 0 0) "warranty.rb" "visitation.rb" "visit.rb" "vehicle.rb" "uuid.rb" "user_type.rb" "user_tag_activation_mailer.rb" "user_permissions.rb" "user_observer.rb" "user_notifier.rb" "user_image.rb" "user_bulk_tag_activation.rb" "user_asset.rb" "user.rb" "units_manager.rb" "units_converter.rb" "trip_event.rb" "timeline_segment.rb" "telemetry_translator.rb" "task_attachment.rb" "tag_upload_result.rb" "tag_upload_entry.rb" "tag_type.rb" "tag_status.rb" "tag_session_cache.rb" "tag_reading.rb" "tag_reader.rb" "tag_option.rb" "tag_map_bubble.rb" "tag_family.rb" "tag_delivery_option_queue.rb" "tag_delivery_option.rb" "tag_delivery_log.rb" "tag_delivery_assignment.rb" "tag_cipher_key.rb" "tag_cipher.rb" "tag_change_comment.rb" "tag_activation.rb" "tag.rb" "subscription_type_category.rb" "subscription_type.rb" "subscription_option.rb" "subscription_history.rb" "subscription_change.rb" "stu_message.rb" "stop_location.rb" "stop.rb" "state.rb" "spot_message.rb" "speeding_timeline_segment.rb" "speeding_segment_detail.rb" "speeding_segment.rb" "speeding_event.rb" "speed_limit_old.rb" "speed_limit_manager.rb" "speed_limit.rb" "shipping.rb" "shapefile.rb" "selected_tag.rb" "selected_asset_session.rb" "selected_asset.rb" "scheduled_report_recipient.rb" "satellite_tag.rb" "safety_event_log.rb" "runtime_observation.rb" "runtime_event.rb" "rule.rb" "rite_notifier.rb" "rig_logix_rig_location_history.rb" "rig_data_update_result.rb" "reverse_geocoder.rb" "request_log.rb" "reports/" "report_stat.rb" "report_request.rb" "report_mailer.rb" "report_family_membership.rb" "report_family.rb" "rental_customer.rb" "readings_status_updater.rb" "readings_processor.rb" "readings_backfiller.rb" "readings_aggregator.rb" "readings_aggregate.rb" "reading_map_bubble.rb" "reading_event.rb" "reading.rb" "quantity.rb" "quality_file.rb" "preferences.rb" "order_option.rb" "order_line.rb" "order_detail_option.rb" "order_commission.rb" "order.rb" "oauth/" "named_location_type.rb" "mv_daily_distance_by_state.rb" "mv_daily_asset_location_based_utilization.rb" "monitoring_account.rb" "model_event_observer.rb" "mobile/" "message_queue.rb" "message.rb" "measurement_tag_type.rb" "measurement_summary.rb" "measurement_reset_log.rb" "measurement_reading.rb" "measurement_mapping.rb" "measurement_adjustment.rb" "measurement.rb" "map_template.rb" "map_pin.rb" "map_layer.rb" "maintenance_task.rb" "maintenance_list_assignment.rb" "maintenance_list.rb" "lot.rb" "locations/" "location_type.rb" "location_mixin_sequel.rb" "location_mixin.rb" "location_history.rb" "location_group_assignment.rb" "location_group.rb" "location.rb" "lists/" "lat_lon.rb" "label_asset.rb" "label.rb" "jbus_reading.rb" "interaction/" "inreach.rb" "input_accumulator_translator.rb" "info_spec.rb" "info_context.rb" "info_column_spec.rb" "import.rb" "icon.rb" "gf_xml_message.rb" "gf_query/" "geometry_column.rb" "geoforce_tag.rb" "garmin_provision.rb" "garmin_canned_message.rb" "fleet_stop_message.rb" "fleet_message.rb" "fleet_dispatcher.rb" "fleet_connector.rb" "external_data_behavior.rb" "event_notifier.rb" "event_handler.rb" "event.rb" "envirovat_billable_activity.rb" "driver_status.rb" "driver_name_assignment.rb" "driver_fob_segment.rb" "driver_fob_event.rb" "driver_fob.rb" "driver_event_history.rb" "driver.rb" "dispatch_task.rb" "dispatch_audit.rb" "destination.rb" "delivery_mailer.rb" "delivery_formats/" "datawarehouse/" "current_measurement_reading.rb" "csv_exporter.rb" "country.rb" "compliance_profile.rb" "child_asset_type_spec.rb" "child_asset_assoc_spec.rb" "chainable.rb" "certificate_template.rb" "certificate_content.rb" "calamp.rb" "busy_timeout.rb" "bulk_request.rb" "bulk.rb" "billing_report.rb" "base_named_location_type.rb" "available_user_type.rb" "attachment.rb" "async_report_mailer.rb" "assets_user.rb" "assets_rule.rb" "assets_label.rb" "asset_update_result_sharing_entry.rb" "asset_update_result_entry.rb" "asset_update_result.rb" "asset_type.rb" "asset_task.rb" "asset_tag_association_service.rb" "asset_statistic.rb" "asset_share.rb" "asset_rental.rb" "asset_relationship.rb" "asset_property_mapping.rb" "asset_property_history.rb" "asset_property.rb" "asset_note.rb" "asset_mv.rb" "asset_map_bubble.rb" "asset_location.rb" "asset_install_uninstall_record.rb" "asset_event_history.rb" "asset_count.rb" "asset_consignment.rb" "asset_blob.rb" "asset.rb" "api_user_stat.rb" "api_user.rb" "api_purpose.rb" "api_key.rb" "announcement.rb" "after_commit_access_to_changes_mixin.rb" "address_type.rb" "address_accuracy.rb" "address.rb" "accumulator_translator.rb" "accumulator_event.rb" "accounts_user.rb" "account_tag_delivery_option.rb" "account_share.rb" "account_named_location.rb" "account_map_template.rb" "account_map_layer.rb" "account_location_type.rb" "account_location_group.rb" "account_label.rb" "account_delivery_format.rb" "account_asset_type.rb" "account_asset.rb" "account.rb" "#tag_reading.rb#" "#asset.rb#" "#account_asset.rb#" "../" "./")
+
+ ("/Users/umaldonado/repo/exercism/ruby/bob/" (21353 42848 0 0) "README.md" "bob_test.rb" "bob2.rb" "bob.rb~" "bob.rb" ".git/" "../" "./")
+
+ ("/Users/umaldonado/repo/haskell/real-world-haskell/ch04/" (21372 10757 0 0) "splitLines.hs" "safeVersions.hs" "InteractWith.o" "InteractWith.hs" "InteractWith.hi" "InteractWith" "hello-out.txt" "hello-in.txt" "../" "./")
+
+ ("/Users/umaldonado/repo/haskell/real-world-haskell/" (21370 33715 0 0) "ch04/" "../" "./")
+
+ ("/Users/umaldonado/repo/haskell/" (21370 33701 0 0) "real-world-haskell/" "cards/" "../" "./")
+
+ ("/Users/umaldonado/repo/geoforce/app/controllers/api/v1/" (21346 39161 0 0) "users_controller.rb" "user_types_controller.rb" "tags_controller.rb" "tag_types_controller.rb" "tag_readings_controller.rb" "queues_controller.rb" "named_locations_controller.rb" "named_location_types_controller.rb" "assets_controller.rb" "asset_types_controller.rb" "asset_rentals_controller.rb" "asset_groups_controller.rb" "asset_group_assignments_controller.rb" "asset_attachments_controller.rb" "accounts_controller.rb" "account_map_layers_controller.rb" "#tag_readings_controller.rb#" "../" "./")
+
+ ("/Users/umaldonado/repo/geoforce/app/controllers/api/" (21346 39161 0 0) "vehicles_controller.rb" "v1/" "users_controller.rb" "speeding_tag_data_controller.rb" "speed_limits_controller.rb" "ops_portal/" "mobile/" "map_layers_controller.rb" "lone_worker_devices_controller.rb" "integration_pre_flight_controller.rb" "driver_invoice_verification/" "current_user_info_controller.rb" "base_api_controller.rb" "assets_controller.rb" "accounts_controller.rb" "abstract_controller.rb" "../" "./")
+
+ ("/Users/umaldonado/Desktop/" (21343 50449 0 0) "scratch.sql" "scratch/" "query1.csv" "indifferent_access.rb" "hello.html" ".localized" ".DS_Store" "../" "./")
+
+ ("/Users/umaldonado/.emacs.d/custom/" (21339 60351 0 0) "ido-config.el" "11robe.el" "10smartparens.el" "09projectile.el" "08evil.el~" "08evil.el" "07yasnippet.el" "06rsense.el" "05robe.el" "04web-mode.el" "03auto-complete.el" "02org.el" "01ruby.el" "00common-setup.el" "../" "./")
+
+ ("/Users/umaldonado/Documents/journal/" (21342 31195 0 0) "20140428" "20140425" "20140424" ".#20140428" "../" "./")
+
+ ("/Users/umaldonado/repo/emacs/evil-org-mode/" (21342 29453 0 0) "README.org" "evil-org.el" ".git/" "../" "./")
+
+ ("/Users/umaldonado/repo/emacs/" (21338 45766 0 0) "powerline/" "evil-org-mode/" "../" "./")
+
+ ("/Users/umaldonado/repo/geoforce/app/workers/" (21338 48934 0 0) "xirgo_wired_reading_worker.rb" "xirgo_wired_event_worker.rb" "xirgo_reading_worker.rb" "xirgo_event_worker.rb" "user_tag_activation_worker.rb" "us_nd_slb_well_update_worker.rb" "us_nd_slb_rig_update_worker.rb" "ublip_gw_reading_worker.rb" "ublip_gw_event_worker.rb" "trip_event_worker.rb" "timeline_segment_worker.rb" "timeline_event_forwarder.rb" "telemetry_worker.rb" "telemetry_segment_worker.rb" "tag_reading_processor_worker.rb" "tag_import_service.rb" "tag_activation_worker.rb" "stu_reading_worker.rb" "spot_reading_worker.rb" "speeding_segment_worker.rb" "safety_event_publisher.rb" "rig_logix_rig_update_worker.rb" "rig_data_update_service.rb" "reverse_geocoder_worker.rb" "request_log_worker.rb" "report_generator_worker.rb" "rental_event_forwarder.rb" "rental_backfill_worker.rb" "reading_status_updater_worker.rb" "reading_rule_worker.rb" "reading_maker_worker.rb" "reading_event_worker.rb" "reading_backfill_worker.rb" "raw_stu_reading_worker.rb" "raw_reading_worker.rb" "raw_gf_xml_reading_worker.rb" "orbit_one_stu_reading_worker.rb" "orbit_one_orbitrax_reading_worker.rb" "orbit_one_event_worker.rb" "oauth_cleanup_worker.rb" "model_event_publisher.rb" "map_pin_cache_population_worker.rb" "location_visit_segment_worker.rb" "location_stop_segment_worker.rb" "location_history_backfill_worker.rb" "location_enrichment_worker.rb" "location_enrichment_tag_worker.rb" "inreach_reading_worker.rb" "identec_tag_event_reading_worker.rb" "identec_event_worker.rb" "heavy_report_generator_worker.rb" "gt_event_worker.rb" "geofence_rule_worker.rb" "fleet_message_worker.rb" "demo_tag_publisher.rb" "delivery_worker.rb" "delivery_processing_worker.rb" "daily_distance_by_state_worker.rb" "compliance_adjustment_worker.rb" "calamp_reading_worker.rb" "calamp_raw_reading_worker.rb" "calamp_outbound_worker.rb" "calamp_event_worker.rb" "business_monitor_worker.rb" "boem_us_pacific_platform_import_worker.rb" "boem_us_gulf_of_mexico_platform_import_worker.rb" "billing_report_download_worker.rb" "billing_report_download_enqueue_worker.rb" "async_report_emailer.rb" "asset_view_refresh_service.rb" "asset_update_service.rb" "asset_location_worker.rb" "asset_location_based_utilization_worker.rb" "asset_flattening_worker.rb" "api/" "../" "./")
+
+ ("/Users/umaldonado/repo/org-mode/images/" (21336 7591 0 0) "infinispan-as-a-library.png" "../" "./")
+
+ ("/Users/umaldonado/repo/clientintegration/clients/" (21317 43357 0 0) "init.rb" "demo_tag_client.rb" "base_client.rb" "../" "./")
+
+ ("/Users/umaldonado/repo/geoforce/app/controllers/" (21333 22380 0 0) "user_type_controller.rb" "tags_controller.rb" "tag_upload_results_controller.rb" "shared_controller.rb" "shared_assets_controller.rb" "setup/" "scheduled_reports_controller.rb" "reports_controller.rb" "oauth_controller.rb" "measurement_reset_logs_controller.rb" "measurement_readings_controller.rb" "measurement_adjustments_controller.rb" "map_controller.rb" "maintenance_tasks_controller.rb" "location_search_controller.rb" "lists/" "javascript_controller.rb" "incident_controller.rb" "inbox_controller.rb" "fleet/" "field_support/" "feeds_controller.rb" "error_controller.rb" "dispatch_audit_controller.rb" "dispatch/" "data_delivery_controller.rb" "data_controller.rb" "dashboard_controller.rb" "dashboard/" "customized_reports_controller.rb" "business_monitors_controller.rb" "bulk_controller.rb" "billing_controller.rb" "billable_activity_controller.rb" "assets_controller.rb" "asset_tasks_controller.rb" "asset_subscriptions_controller.rb" "asset_share_controller.rb" "asset_controller.rb" "asset_children_controller.rb" "application_controller.rb" "api/" "announcements_controller.rb" "admin/" "account_controller.rb" "../" "./")
+
+ ("/Users/umaldonado/repo/clientintegration/workers/" (21317 52160 0 0) "init.rb" "demo_tag_worker.rb" "../" "./")
+
+ ("/Users/umaldonado/repo/clientintegration/model/" (21337 38769 0 0) "transport_endpoint.rb" "topic_offset.rb" "tag_reading.rb" "seen_message.rb" "safety_event.rb" "safety_driver.rb" "init.rb" "hello.rb" "demo_tag_cache.rb" "delivery_formats/" "data_source.rb" "account_translation.rb" "account_destination.rb" "../" "./")
+
+ ("/Users/umaldonado/repo/clientintegration/lib/" (21338 31494 0 0) "vendor_integration.rb" "vendor_integration/" "tag_reading_consumer.rb" "sftp_transport_basic.rb" "set_credentials.rb" "retry.rb" "redis_cache.rb" "mail_transport.rb" "hash_from_nokogiri.rb" "ftps_transport.rb" "ftp_transport.rb" "file_archiver.rb" "delivery_format_helper.rb" "client_integration.rb" "client_integration/" "client.rb" "battery_level_data.rb" "../" "./")
+
+ ("/Users/umaldonado/repo/clientintegration/" (21337 37491 0 0) "workers/" "tasks/" "tags" "spec/" "script/" "README.md" "Rakefile" "model/" "log/" "lib/" "intDep" "Guardfile" "Gemfile.lock" "Gemfile" "db/" "config/" "clients/" "Capfile" "app.rb" ".rvmrc" ".rspec" ".idea/" ".gitignore" ".git/" ".DS_Store" "../" "./")
+
+ ("/Users/umaldonado/repo/geoforce/app/" (21333 11505 0 0) "workers/" "views/" "preference_manager.rb" "monitors/" "models/" "map_templates/" "helpers/" "dbviews/" "daemons/" "controllers/" "assets/" "../" "./")
+
+ ("/Users/umaldonado/Google Drive/org-mode/" (21336 6293 0 0) "tickets" "start" "ruby_interview_questions" "integration" "infinispan" "images/" "Icon
+" "archive/" "API_notes.org" ".git/" "../" "./")
 
  ("/Users/umaldonado/google\\ Drive/org-mode/" (21334 52529 0 0) "infinispan.org" ".#infinispan.org" "#infinispan.org#" "../" "./")
-
- ("/Users/umaldonado/repo/integration/" (21326 54237 0 0) "vim.log" "test/" "tags" "readme.md" "Rakefile" "public/" "models/" "lib/" "Gemfile.lock" "Gemfile" "db/" "config.ru" "config/" "app/" ".ruby-version" ".idea/" ".gitignore" ".git/" ".components" "../" "./")
-
- ("/Users/umaldonado/repo/" (21333 63224 0 0) "vimrc/" "tmux-powerline/" "servers/" "pg_partman/" "integration/" "haskell/" "geoforce_mrd/" "geoforce_chef3/" "geoforce/" "Formater" "exercism/" "clients/" "clientintegration/" "bi/" "../" "./")
 
  ("/Users/umaldonado/Google Drive/org-mode/archive/" (21333 36322 0 0) "Icon
 " ".#Icon
 " "../" "./")
 
- ("/Users/umaldonado/repo/exercism/ruby/bob/" (21331 4932 0 0) "README.md" "bob_test.rb" "bob2.rb" "bob.rb~" "bob.rb" "../" "./")
-
- ("/Users/umaldonado/repo/geoforce/" (21333 22380 0 0) "vendor/" "tmp/" "Three Times Tables," "test/" "tags" "script/" "README" "Rakefile" "public/" "noko_cell.rb" "noko.rb" "log/" "lib/" "gf_data_report_xml.rv" "gf_data_report_xml.rb" "Gemfile.lock" "Gemfile" "Gem.local" "deck" "db/" "config.ru" "config/" "Capfile" "app/" "a" ".ruby-version" ".pryrc" ".gitignore" ".git/" "
-:BundleInstall
-" "
-" "../" "./")
-
  ("/Users/umaldonado/Google Drive/notes/" (21333 36012 0 0) "Icon
 " "hello.org~" "hello.org" "ExceptionalRubyNotes.txt" "ExceptionalRubyNotes.md" "APIs-A-Strategy-Guide.md" "#hello.org#" "../" "./")
-
- ("/Users/umaldonado/Google Drive/" (21333 35143 0 0) "UrielGMaldonadoPhoneUsage.pdf" "UrielAccidentForm.pdf" "RTMS Checklist.gdoc" "pseudo_code.rb" "orgcard.pdf" "org-mode/" "ops_support.rb" "notes/" "module.rb~" "METAPROGRAMMING.rb" "mac vbox sharing.gdoc" "Icon
-" "gtserialmessageprotocol.gsheet" "expense report.gsheet" "employee software time survey.gsheet" "devs/" "DBExt_Admin.vim.gdoc" "books/" "benchmarks.rb" "aw_pgsql_book.pdf" "Absence-Form.doc" ".DS_Store" "../" "./")
-
- ("/Users/umaldonado/repo/geoforce/app/controllers/api/v1/" (21333 14639 0 0) "users_controller.rb" "user_types_controller.rb" "tags_controller.rb" "tag_types_controller.rb" "tag_readings_controller.rb" "queues_controller.rb" "named_locations_controller.rb" "named_location_types_controller.rb" "assets_controller.rb" "asset_types_controller.rb" "asset_rentals_controller.rb" "asset_groups_controller.rb" "asset_group_assignments_controller.rb" "asset_attachments_controller.rb" "accounts_controller.rb" "account_map_layers_controller.rb" ".#tag_readings_controller.rb" "../" "./")
 
  ("/Users/umaldonado/repo/exercism/ruby/" (21325 30776 0 0) "leap/" "bob/" "../" "./")
 
  ("/Users/umaldonado/repo/exercism/" (21315 2419 0 0) "scala/" "ruby/" "python/" "perl5/" "ocaml/" "objective-c/" "javascript/" "haskell/" "go/" "elixir/" "coffeescript/" "clojure/" "../" "./")
 
  ("/Users/umaldonado/.bundler/" (21277 62159 0 0) "tmp/" "ruby/" "cache/" "../" "./")
-
- ("/Users/umaldonado/repo/geoforce/app/models/" (21329 55715 0 0) "warranty.rb" "visitation.rb" "visit.rb" "vehicle.rb" "uuid.rb" "user_type.rb" "user_tag_activation_mailer.rb" "user_permissions.rb" "user_observer.rb" "user_notifier.rb" "user_image.rb" "user_bulk_tag_activation.rb" "user_asset.rb" "user.rb" "units_manager.rb" "units_converter.rb" "trip_event.rb" "timeline_segment.rb" "telemetry_translator.rb" "task_attachment.rb" "tag_upload_result.rb" "tag_upload_entry.rb" "tag_type.rb" "tag_status.rb" "tag_session_cache.rb" "tag_reading.rb" "tag_reader.rb" "tag_option.rb" "tag_map_bubble.rb" "tag_family.rb" "tag_delivery_option_queue.rb" "tag_delivery_option.rb" "tag_delivery_log.rb" "tag_delivery_assignment.rb" "tag_cipher_key.rb" "tag_cipher.rb" "tag_change_comment.rb" "tag_activation.rb" "tag.rb" "subscription_type_category.rb" "subscription_type.rb" "subscription_option.rb" "subscription_history.rb" "subscription_change.rb" "stu_message.rb" "stop_location.rb" "stop.rb" "state.rb" "spot_message.rb" "speeding_timeline_segment.rb" "speeding_segment_detail.rb" "speeding_segment.rb" "speeding_event.rb" "speed_limit_old.rb" "speed_limit_manager.rb" "speed_limit.rb" "shipping.rb" "shapefile.rb" "selected_tag.rb" "selected_asset_session.rb" "selected_asset.rb" "scheduled_report_recipient.rb" "satellite_tag.rb" "safety_event_log.rb" "runtime_observation.rb" "runtime_event.rb" "rule.rb" "rite_notifier.rb" "rig_logix_rig_location_history.rb" "rig_data_update_result.rb" "reverse_geocoder.rb" "request_log.rb" "reports/" "report_stat.rb" "report_request.rb" "report_mailer.rb" "report_family_membership.rb" "report_family.rb" "rental_customer.rb" "readings_status_updater.rb" "readings_processor.rb" "readings_backfiller.rb" "readings_aggregator.rb" "readings_aggregate.rb" "reading_map_bubble.rb" "reading_event.rb" "reading.rb" "quantity.rb" "quality_file.rb" "preferences.rb" "order_option.rb" "order_line.rb" "order_detail_option.rb" "order_commission.rb" "order.rb" "oauth/" "named_location_type.rb" "mv_daily_distance_by_state.rb" "mv_daily_asset_location_based_utilization.rb" "monitoring_account.rb" "model_event_observer.rb" "mobile/" "message_queue.rb" "message.rb" "measurement_tag_type.rb" "measurement_summary.rb" "measurement_reset_log.rb" "measurement_reading.rb" "measurement_mapping.rb" "measurement_adjustment.rb" "measurement.rb" "map_template.rb" "map_pin.rb" "map_layer.rb" "maintenance_task.rb" "maintenance_list_assignment.rb" "maintenance_list.rb" "lot.rb" "locations/" "location_type.rb" "location_mixin_sequel.rb" "location_mixin.rb" "location_history.rb" "location_group_assignment.rb" "location_group.rb" "location.rb" "lists/" "lat_lon.rb" "label_asset.rb" "label.rb" "jbus_reading.rb" "inreach.rb" "input_accumulator_translator.rb" "info_spec.rb" "info_context.rb" "info_column_spec.rb" "import.rb" "icon.rb" "gf_xml_message.rb" "gf_query/" "geometry_column.rb" "geoforce_tag.rb" "garmin_provision.rb" "garmin_canned_message.rb" "fleet_stop_message.rb" "fleet_message.rb" "fleet_dispatcher.rb" "fleet_connector.rb" "external_data_behavior.rb" "event_notifier.rb" "event_handler.rb" "event.rb" "envirovat_billable_activity.rb" "driver_status.rb" "driver_event_history.rb" "driver.rb" "dispatch_task.rb" "dispatch_audit.rb" "destination.rb" "delivery_mailer.rb" "delivery_formats/" "datawarehouse/" "current_measurement_reading.rb" "csv_exporter.rb" "country.rb" "compliance_profile.rb" "child_asset_type_spec.rb" "child_asset_assoc_spec.rb" "chainable.rb" "certificate_template.rb" "certificate_content.rb" "calamp.rb" "busy_timeout.rb" "bulk_request.rb" "bulk.rb" "billing_report.rb" "base_named_location_type.rb" "available_user_type.rb" "attachment.rb" "async_report_mailer.rb" "assets_user.rb" "assets_rule.rb" "assets_label.rb" "asset_update_result_sharing_entry.rb" "asset_update_result_entry.rb" "asset_update_result.rb" "asset_type.rb" "asset_task.rb" "asset_tag_association_service.rb" "asset_statistic.rb" "asset_share.rb" "asset_rental.rb" "asset_relationship.rb" "asset_property_mapping.rb" "asset_property_history.rb" "asset_property.rb" "asset_note.rb" "asset_mv.rb" "asset_map_bubble.rb" "asset_location.rb" "asset_install_uninstall_record.rb" "asset_event_history.rb" "asset_count.rb" "asset_consignment.rb" "asset_blob.rb" "asset.rb" "api_user_stat.rb" "api_user.rb" "api_purpose.rb" "api_key.rb" "announcement.rb" "after_commit_access_to_changes_mixin.rb" "address_type.rb" "address_accuracy.rb" "address.rb" "accumulator_translator.rb" "accumulator_event.rb" "accounts_user.rb" "account_tag_delivery_option.rb" "account_share.rb" "account_named_location.rb" "account_map_template.rb" "account_map_layer.rb" "account_location_type.rb" "account_location_group.rb" "account_label.rb" "account_delivery_format.rb" "account_asset_type.rb" "account_asset.rb" "account.rb" "#tag_reading.rb#" "#asset.rb#" "#account_asset.rb#" "../" "./")
 
  ("/Users/umaldonado/.emacs.d/.cask/" (21326 51854 0 0) "24.4.50.1/" "24.3.1/" "../" "./")
 
@@ -98,15 +152,7 @@
 
  ("/Users/umaldonado/.emacs.d/snippets/" (21327 2154 0 0) "yasnippet-snippets/" "../" "./")
 
- ("/Users/umaldonado/gf_delivery_format/" (21324 47763 0 0) "tmp/" "test.rb" "tags" "spec/" "README.md" "Rakefile" "LICENSE.txt" "lib/" "Guardfile" "gf_delivery_format.gemspec" "Gemfile.lock" "Gemfile" "coverage/" ".rspec" ".idea/" ".gitignore" ".git/" ".DS_Store" "../" "./")
-
  ("/Users/umaldonado/.activator/" (21288 32873 0 0) "1.0.13/" "1.0/" "../" "./")
-
- ("/Users/" (21309 50966 0 0) "umaldonado/" "Shared/" "ip/" "GFAdmin/" ".localized" "../" "./")
-
- ("/Users/umaldonado/repo/geoforce/app/" (21241 8517 0 0) "workers/" "views/" "preference_manager.rb" "monitors/" "models/" "map_templates/" "helpers/" "dbviews/" "daemons/" "controllers/" "assets/" "../" "./")
-
- ("/Users/umaldonado/repo/geoforce/app/controllers/" (21316 10041 0 0) "user_type_controller.rb" "tags_controller.rb" "tag_upload_results_controller.rb" "shared_controller.rb" "shared_assets_controller.rb" "setup/" "scheduled_reports_controller.rb" "reports_controller.rb" "oauth_controller.rb" "measurement_reset_logs_controller.rb" "measurement_readings_controller.rb" "measurement_adjustments_controller.rb" "map_controller.rb" "maintenance_tasks_controller.rb" "location_search_controller.rb" "lists/" "javascript_controller.rb" "incident_controller.rb" "inbox_controller.rb" "fleet/" "field_support/" "feeds_controller.rb" "error_controller.rb" "dispatch_audit_controller.rb" "dispatch/" "data_delivery_controller.rb" "data_controller.rb" "dashboard_controller.rb" "dashboard/" "customized_reports_controller.rb" "business_monitors_controller.rb" "bulk_controller.rb" "billing_controller.rb" "billable_activity_controller.rb" "assets_controller.rb" "asset_tasks_controller.rb" "asset_subscriptions_controller.rb" "asset_share_controller.rb" "asset_controller.rb" "asset_children_controller.rb" "application_controller.rb" "api/" "announcements_controller.rb" "admin/" "account_controller.rb" "../" "./")
 
  ("/Users/umaldonado/repo/geoforce/app/controllers/admin/" (21274 30436 0 0) "map/" "feeds/" "devices/" "billing_reports_controller.rb" "billing/" "api/" "admin_controller.rb" "accounts/" "../" "./")
 

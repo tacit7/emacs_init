@@ -37,6 +37,7 @@
 (depends-on "mew")
 (depends-on "multi-term")
 (depends-on "noctilux-theme")
+(depends-on "org-journal")
 (depends-on "pallet")
 (depends-on "pkg-info")
 (depends-on "popup")
@@ -62,3 +63,9 @@
 (depends-on "web-mode")
 (depends-on "wrap-region")
 (depends-on "yasnippet")
+(depends-on "solarized-theme")
+(depends-on "haskell-mode")
+(depends-on "ghc-mod")
+(depends-on "stylish-haskell")
+(depends-on "structured-haskell-mode")
+
