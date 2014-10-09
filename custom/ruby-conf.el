@@ -1,4 +1,5 @@
-(setq enh-ruby-program "/Users/umaldonado/.rvm/rubies/ruby-1.9.3-p545/bin/ruby")
+(require 'enh-ruby-mode)
+(setq enh-ruby-program "/Users/umaldonado/.rbenv/shims/ruby")
 (autoload 'enh-ruby-mode "enh-ruby-mode" "Major mode for ruby files" t)
 (add-to-list 'auto-mode-alist '("\\.rb$" . enh-ruby-mode))
 (add-to-list 'auto-mode-alist '("\\.rake$" . enh-ruby-mode))
@@ -9,6 +10,8 @@
 
 (add-to-list 'interpreter-mode-alist '("ruby" . enh-ruby-mode))
 
+(add-hook 'ruby-mode-hook 'robe-mode)
+(add-hook 'ruby-mode-hook 'rubocop-mode)
 (setq enh-ruby-bounce-deep-indent t)
 (setq enh-ruby-hanging-brace-indent-level 2)
 
@@ -48,3 +51,15 @@
 	    (local-set-key (kbd "C-c l") 'rspec-compile-on-line)
 	    (local-set-key (kbd "C-c k") 'rspec-compile-file)
 	    ))
+
+
+(add-hook 'enh-ruby-mode-hook 'inf-ruby-minor-mode)
+(eval-after-load 'company
+  '(add-to-list 'company-backends 'company-inf-ruby))
+
+(add-hook 'enh-ruby-mode-hook
+          (lambda () (modify-syntax-entry ?_ "w")))
+
+
+;;; ruby-conf.el ends here
+
