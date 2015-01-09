@@ -3,9 +3,9 @@
 (add-hook 'after-init-hook 'global-company-mode)
 
 (global-set-key (kbd "<backtab>") 'company-complete-common)
+
 (defun complete-or-indent ()
   (interactive)
   (if (company-manual-begin)
       (company-complete-common)
     (indent-according-to-mode)))
-(setq company-begin-commands '(self-insert-command))

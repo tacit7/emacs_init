@@ -10,8 +10,6 @@
 
 (add-to-list 'interpreter-mode-alist '("ruby" . enh-ruby-mode))
 
-(add-hook 'ruby-mode-hook 'robe-mode)
-(add-hook 'ruby-mode-hook 'rubocop-mode)
 (setq enh-ruby-bounce-deep-indent t)
 (setq enh-ruby-hanging-brace-indent-level 2)
 
@@ -58,8 +56,15 @@
   '(add-to-list 'company-backends 'company-inf-ruby))
 
 (add-hook 'enh-ruby-mode-hook
-          (lambda () (modify-syntax-entry ?_ "w")))
+          (lambda () (modify-syntax-entry ?_ "_")))
 
+(defadvice ruby-indent-line (around outdent-modifiers activate)
+  (if (save-excursion
+        (beginning-of-line)
+        (looking-at "\s*\\(private\\|protected\\|public\\)\s*$"))
+      (save-excursion
+        (beginning-of-line)
+        (just-one-space 0))
+      ad-do-it))
 
 ;;; ruby-conf.el ends here
-

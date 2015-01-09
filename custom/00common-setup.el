@@ -2,6 +2,17 @@
 (require 'linum)
 (require 'linum-relative)
 (require 'helm)
+(setq make-backup-files nil)
+
+
+;disable backup
+(setq backup-inhibited t)
+;disable auto save
+(setq auto-save-default nil)
+
+
+(setq explicit-shell-file-name "/bin/zsh")
+(define-key global-map (kbd "RET") 'newline-and-indent) ;; Auto indent when you hit return
 (tool-bar-mode -1) ; no tool bar
 (global-linum-mode 1) ; all files have line numbers
 (global-hl-line-mode 1) ; highlight the current line
