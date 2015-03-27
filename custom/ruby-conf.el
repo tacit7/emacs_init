@@ -1,5 +1,5 @@
 (require 'enh-ruby-mode)
-(setq enh-ruby-program "/Users/umaldonado/.rbenv/shims/ruby")
+;(setq enh-ruby-program "/Users/umaldonado/.rbenv/shims/ruby")
 (autoload 'enh-ruby-mode "enh-ruby-mode" "Major mode for ruby files" t)
 (add-to-list 'auto-mode-alist '("\\.rb$" . enh-ruby-mode))
 (add-to-list 'auto-mode-alist '("\\.rake$" . enh-ruby-mode))
@@ -66,5 +66,24 @@
         (beginning-of-line)
         (just-one-space 0))
       ad-do-it))
+(defun get-current-test-name ()
+  (save-excursion
+    (let ((pos)
+          (test-name))
+      (re-search-backward "test \"\\([^\"]+\\)\" do")
+      (setq test-name (buffer-substring-no-properties (match-beginning 1) (match-end 1)))
+      (concat "test_" (replace-regexp-in-string " " "_" test-name)))))
+
+
+(defun run-test-at-point ()
+  (interactive)
+  (let ((root-dir (projectile-project-root)))
+    (compile (format "ruby -Ilib:test -I%s/test %s -n %s" root-dir (expand-file-name (buffer-file-name)) (get-current-test-name)))))
+
+(defun run-tests-in-file ()
+  (interactive)
+  (let ((root-dir (projectile-project-root)))
+    (compile (format "ruby -Ilib:test -I%s/test %s" root-dir (expand-file-name (buffer-file-name))))))
+
 
 ;;; ruby-conf.el ends here

@@ -1,5 +1,0 @@
-
-
-(custom-set-faces
-
- '(linum ))

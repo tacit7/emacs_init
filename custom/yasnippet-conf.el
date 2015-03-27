@@ -1,8 +1,6 @@
-(require 'yasnippet)
-(yas-global-mode 1)
-(setq yas-snippet-dirs
-      '("~/.emacs.d/snippets/yasnippet-snippets" )
-      )
+;;;;
+;;;
+(setq yas-snippet-dirs '("~/.emacs.d/snippets/yasnippet-snippets" ))
 (add-hook 'web-mode-hook #'(lambda () (set (make-local-variable 'yas--extra-modes) 'html-mode)))
 (add-hook 'web-mode-hook #'(lambda () (yas-activate-extra-mode 'html-mode)))
 

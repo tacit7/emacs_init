@@ -3,23 +3,16 @@
 (global-set-key "\C-ca" 'org-agenda)
 (setq org-directory "~/repo/org-mode")
 (setq org-log-done 'time) ; timestamp for Todos when done
-
+(org-display-inline-images t t)
 (eval-after-load "org"
   '(require 'ox-md nil t))
 
-(defvar current-sprint "sprint011915")
-
-(defun tag-with-sprint ()
-  (interactive)
-  (end-of-line)
-  (insert (concat "            :" current-sprint ":"))
-  (org-set-tags-commmand))
-
+(setq org-ellipsis " ⤵")
 (setq org-todo-keywords
       '((sequence "TODO(t)"  "BLOCKED BY" "BLOCKING TO"  "|" "DONE(d)")
 	(sequence "Sprint" "Delayed" "|" "Done")
 	(sequence "Open" "In Progress" "Code Review" "Resloved [QA Ready]" "QA Complete" "Closed")
-	(sequence "Uriel"  "TJ" "Tiffany" "JR(j)" "Conor(c)" "Ryan (r)" "Rohan" "Aaron (a)" "Kevin(k)" "Dave (d)" "Dave (h)" "|" "DONE(d)")))
+	(sequence "Uriel"  "TJ" "Tiffany" "JR(j)" "Conor(c)" "Ryan (r)" "Rohan" "Aaron (a)" "Kevin(k)" "Dave (d)" "David (h)" "|" "DONE(d)")))
 
 (setq org-export-publishing-directory "./exports")
 (smartparens-mode 0)
@@ -44,9 +37,17 @@
 (setq org-export-with-sub-superscripts nil)
 
 
+(require 'org-bullets)
+(add-hook 'org-mode-hook (lambda () (org-bullets-mode 1)))
 
 
+(setq current-sprint "sprint020219")
 
+(defun tag-with-sprint ()
+  (interactive)
+  (end-of-line)
+  (insert (concat "  :" current-sprint ":"))
+  (org-set-tags-command t))
 
 (defun phab-ticket-link (ticket-number)
   "Create an Org-Todo with a link to the ticket on code review."
@@ -70,7 +71,7 @@
 	 (org-todo-line (concat "* Uriel " org-link ))
 	 )
     (insert org-todo-line)
-    (bookmark-set (concat "T" ticket-number))
+    (tag-with-sprint)
     (insert "\n")
     (insert "Diff: \n")
     (insert "Files: \n")))
@@ -101,6 +102,7 @@
   (interactive)
   (magit-show-commit (thing-at-point 'word)))
 
+
 (defun tacit7/org-link (file desc)
   (concat "[[" file "][" desc "]]"))
 
@@ -111,6 +113,58 @@
 
 (defvar uriel-phid "PHID-USER-nq6jtsavod5vy7tkgfga")
 
+(require 'dash)
+
+(defun tacit7/is-directory-p (path)
+ (nth 0 (file-attributes path)))
+
+(defun tacit7/ls-directories (path)
+  (let* ((exclude-dot-dirs-regex "^\\([^.]\\|\\.[^.]\\|\\.\\..\\...\\)")
+	 (files-and-dirs (directory-files path :show-full-path exclude-dot-dirs-regex))
+	 (dirs ((-select 'tacit7/is-directory-p files-and-dirs))))
+    dirs))
+
+(defun ugm/go-to-notes ()
+  (find-file "/Users/umaldonado/repo/org-mode"))
+
+
+;; ====================
+;; insert date and time
+
+(defvar current-date-time-format "%a %b %d %H:%M:%S %Z %Y"
+  "Format of date to insert with `insert-current-date-time' func
+See help of `format-time-string' for possible replacements")
+
+(defvar current-time-format "%a %H:%M:%S"
+  "Format of date to insert with `insert-current-time' func.
+Note the weekly scope of the command's precision.")
+
+(defun ugm/insert-current-date-time ()
+  "insert the current date and time into current buffer.
+Uses `current-date-time-format' for the formatting the date/time."
+       (interactive)
+       (insert "==========\n")
+;       (insert (let () (comment-start)))
+       (insert (format-time-string current-date-time-format (current-time)))
+       (insert "\n")
+       )
+
+(defun ugm/insert-current-time ()
+  "insert the current time (1-week scope) into the current buffer."
+       (interactive)
+       (insert (format-time-string current-time-format (current-time)))
+       (insert "\n")
+       )
+(defalias 'ugm/insert-timestamp 'ugm/insert-current-time)
+
+(defun ugm/org-insert-code-source (lang)
+	(interactive "sLanguage: ")
+	(insert "#+BEGIN_SRC ")
+	(insert lang)
+	(insert " \n")
+	(insert "#+END_SRC "))
+(global-set-key "\C-x\C-d" 'insert-current-date-time)
+(global-set-key "\C-x\C-t" 'insert-current-time)
 ;; (defvar tacit7/journal-entry-time (* 30 60))
 ;; (defun tacit7/reminder-journal-entry ()
 ;;   "Remind me to enter in the jouRnal what ive done in the past thirty minutes"

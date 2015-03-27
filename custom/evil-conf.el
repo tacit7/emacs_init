@@ -1,3 +1,4 @@
+
 ;;; package --- Summary:
 ;;; Commentary:
 ;;; Code:
@@ -6,19 +7,12 @@
 (setq evil-want--i-jump t)
 (setq evil-toggle-key "C-`")
 (setq evil-auto-indent t)
-(setq evil-want-fine-undo 'fine)
+(setq evil-want-fine-undo t)
 (require 'evil)
 (require 'evil-leader)
 (require 'evil-surround)
-(require 'evil-snipe)
-(global-evil-snipe-mode 1)
-
-;; Optional!
-(evil-snipe-replace-evil) ;; replaces evil-mode's f/F/t/T/;/, with snipe
-(evil-snipe-enable-nN)    ;; enable repeating with n/N (not implemented)
-
 ;; not necessary if using (evil-snipe-replace-evil)
-(evil-snipe-enable-sS)    ;; enable repeating with s/S
+
 (global-evil-surround-mode 1)
 (evil-mode 1)
 (global-evil-leader-mode)
@@ -60,7 +54,7 @@
   "Insert binging pry and then save the file."
   (interactive)
   (evil-open-below 1)
-  (insert "binding.pry")
+  (insert "require 'pry'; binding.pry")
   (evil-normal-state)
   (save-buffer))
 
@@ -80,14 +74,27 @@ Repeated invocations toggle between the two most recently open buffers."
 (define-key evil-insert-state-map "\C-b" 'sp-backward-slurp-sexp)
 
 
+(defun ugm/new-line ()
+	(interactive)
+	(open-line 2)
+	(forward-line 2)
+	(indent-for-tab-command))
+
+
+
+(define-key evil-normal-state-map (kbd "C-e") 'ugm/new-line)
+(define-key evil-insert-state-map (kbd "C-e") 'ugm/new-line)
+
+
 ;; normal mode key maps
 (define-key evil-normal-state-map "\C-p" 'helm-projectile)
+(define-key evil-normal-state-map (kbd "s") 'ace-jump-word-mode)
 (define-key evil-normal-state-map "gor" 'helm-mini)
 (define-key evil-normal-state-map "gom" 'helm-imenu)
 (define-key evil-normal-state-map "gol" 'org-store-link)
 (define-key evil-normal-state-map "got" 'tacit7/open-org-tickets)
 
-(define-key evil-normal-state-map (kbd "gb") 'helm-buffers-list)
+(define-key evil-normal-state-map (kbd "gb") 'helm-projectile-switch-to-buffer)
 (define-key evil-normal-state-map (kbd "C-SPC") 'helm-M-x)
 
 
@@ -95,6 +102,9 @@ Repeated invocations toggle between the two most recently open buffers."
 (define-key evil-normal-state-map "J" 'evil-join)
 (add-to-list 'evil-emacs-state-modes 'nav-mode)
 
+(define-key yas-minor-mode-map (kbd "<tab>") nil)
+(define-key yas-minor-mode-map (kbd "TAB") nil)
+(define-key yas-minor-mode-map (kbd "C-x C-k") 'yas-expand) ;
 
 
 
@@ -106,6 +116,10 @@ Repeated invocations toggle between the two most recently open buffers."
     (define-key evil-normal-state-map (kbd "C-w q") 'vimlike-quit)
     (evil-ex-define-cmd "q[uit]" 'vimlike-quit)))
 
+(defun neotree-preview-file ()
+  "Preview file."
+  (neotree-enter)
+  (evil-window-prev 1))
 
 (eval-after-load 'neotree
   (progn
@@ -117,8 +131,13 @@ Repeated invocations toggle between the two most recently open buffers."
 			 (define-key evil-normal-state-local-map (kbd "TAB") 'neotree-enter)
 			 (define-key evil-normal-state-local-map (kbd "j") 'next-line)
 			 (define-key evil-normal-state-local-map (kbd "k") 'previous-line)
+			 (define-key evil-normal-state-local-map (kbd "o") 'neotree-preview-file)
 			 (define-key evil-normal-state-local-map (kbd "RET") 'neotree-enter)))
 	     )))
+(define-key evil-normal-state-map (kbd "gom") 'projectile-rails-find-model)
+(define-key evil-normal-state-map (kbd "god") 'helm-imenu)
+(define-key evil-normal-state-map (kbd "goc") 'projectile-rails-find-controller)
+(define-key evil-normal-state-map (kbd "gov") 'projectile-rails-find-view)
 (evil-add-hjkl-bindings eshell-mode-map 'normal
   (kbd "M-j") 'eshell-previous-input                   ; "j"
   (kbd "M-k") 'eshell-next-input )   ; "k")
@@ -147,7 +166,6 @@ Repeated invocations toggle between the two most recently open buffers."
   "X" 'tacit7/evil-xmp-comment-and-eval
   "d" 'neotree-toggle
   "D" 'dired
-  "w" 'ace-jump-word-mode
   "s" 'sp-forward-slurp-sexp
   "S" 'sp-backward-slurp-sexp
   "l" 'ace-jump-line-mode
@@ -155,8 +173,8 @@ Repeated invocations toggle between the two most recently open buffers."
   "j" 'helm-M-x
   "k" 'kill-buffer
   "e" 'eval-region
-  "bp" 'tacit7/binding-pry
-  "f" 'projectile-find-file)
+  "c" 'tacit7/binding-pry
+  "f" 'helm-projectile-find-file)
 ;;; some hack to get indetation working
 (define-key evil-insert-state-map [remap newline] 'newline)
 (define-key evil-insert-state-map [remap newline-and-indent] 'newline-and-indent)
@@ -165,15 +183,15 @@ Repeated invocations toggle between the two most recently open buffers."
 
 
 ;; ElScreen
-(define-key evil-normal-state-map (kbd "s-1") (lambda() (interactive) (elscreen-goto 0)))
-(define-key evil-normal-state-map (kbd "s-2") (lambda() (interactive) (elscreen-goto 1)))
-(define-key evil-normal-state-map (kbd "s-3") (lambda() (interactive) (elscreen-goto 2)))
-(define-key evil-normal-state-map (kbd "s-4") (lambda() (interactive) (elscreen-goto 3)))
-(define-key evil-normal-state-map (kbd "s-5") (lambda() (interactive) (elscreen-goto 4)))
-(define-key evil-normal-state-map (kbd "s-6") (lambda() (interactive) (elscreen-goto 5)))
-(define-key evil-normal-state-map (kbd "s-7") (lambda() (interactive) (elscreen-goto 6)))
-(define-key evil-normal-state-map (kbd "s-8") (lambda() (interactive) (elscreen-goto 7)))
-(define-key evil-normal-state-map (kbd "s-9") (lambda() (interactive) (elscreen-goto 8)))
+(global-set-key (kbd "s-1") (lambda() (interactive) (elscreen-goto 0)))
+(global-set-key (kbd "s-2") (lambda() (interactive) (elscreen-goto 1)))
+(global-set-key (kbd "s-3") (lambda() (interactive) (elscreen-goto 2)))
+(global-set-key (kbd "s-4") (lambda() (interactive) (elscreen-goto 3)))
+(global-set-key (kbd "s-5") (lambda() (interactive) (elscreen-goto 4)))
+(global-set-key (kbd "s-6") (lambda() (interactive) (elscreen-goto 5)))
+(global-set-key (kbd "s-7") (lambda() (interactive) (elscreen-goto 6)))
+(global-set-key (kbd "s-8") (lambda() (interactive) (elscreen-goto 7)))
+(global-set-key (kbd "s-9") (lambda() (interactive) (elscreen-goto 8)))
 
 
 ;;; evil-conf ends here
