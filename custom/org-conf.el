@@ -7,7 +7,7 @@
 (eval-after-load "org"
   '(require 'ox-md nil t))
 
-(setq org-ellipsis " ⤵")
+(setq org-ellipsis " ▾")
 (setq org-todo-keywords
       '((sequence "TODO(t)"  "BLOCKED BY" "BLOCKING TO"  "|" "DONE(d)")
 	(sequence "Sprint" "Delayed" "|" "Done")
@@ -15,7 +15,6 @@
 	(sequence "Uriel"  "TJ" "Tiffany" "JR(j)" "Conor(c)" "Ryan (r)" "Rohan" "Aaron (a)" "Kevin(k)" "Dave (d)" "David (h)" "|" "DONE(d)")))
 
 (setq org-export-publishing-directory "./exports")
-(smartparens-mode 0)
 (setq org-startup-indented t)
 (auto-fill-mode 1)
 (setq org-agenda-files (list "~/repo/org-mode/"))
@@ -26,6 +25,7 @@
  'org-babel-load-languages
  '(
    (ruby . t)
+   (js . t)
    (octave . t)
    ))
 (setq-default fill-column 80)
@@ -110,8 +110,6 @@
 
 
 ;;; Phabbricator
-
-(defvar uriel-phid "PHID-USER-nq6jtsavod5vy7tkgfga")
 
 (require 'dash)
 

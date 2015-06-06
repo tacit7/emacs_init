@@ -1,5 +1,4 @@
 (require 'projectile-rails)
-(projectile-rails-mode)
 
  (projectile-global-mode)
  (setq projectile-enable-caching t)
@@ -19,8 +18,7 @@
 
 (defun ugm/notes ()
   (interactive)
-  (cd "~/repo/org-mode/")
-  (projectile-switch-project-by-name "~/repo/org-mode/"))
+  (dired "~/uriel-repo/notes/"))
 
 (defun ugm/project-twilio-notes ()
   (interactive)

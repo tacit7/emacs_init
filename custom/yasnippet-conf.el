@@ -1,6 +1,9 @@
 ;;;;
-;;;
-(setq yas-snippet-dirs '("~/.emacs.d/snippets/yasnippet-snippets" ))
+;;; Code:
+
+(eval-after-load 'rspec-mode
+ '(rspec-install-snippets))
+(setq yas-snippet-dirs '("~/uriel-repo/emacs/yasnippet-snippets"))
 (add-hook 'web-mode-hook #'(lambda () (set (make-local-variable 'yas--extra-modes) 'html-mode)))
 (add-hook 'web-mode-hook #'(lambda () (yas-activate-extra-mode 'html-mode)))
 

@@ -1,4 +1,3 @@
-
 ;;; package --- Summary:
 ;;; Commentary:
 ;;; Code:
@@ -76,15 +75,59 @@ Repeated invocations toggle between the two most recently open buffers."
 
 (defun ugm/new-line ()
 	(interactive)
+	(end-of-line)
 	(open-line 2)
 	(forward-line 2)
+	(evil-insert nil)
 	(indent-for-tab-command))
 
+(evil-define-command evil-scroll-page-up-and-center (count)
+  "Scrolls the window COUNT pages upwards."
+  :repeat nil
+  :keep-visual t
+  (interactive "p")
+  (evil-save-column
+    (dotimes (i count)
+      (scroll-down nil)))
+	(evil-scroll-line-to-center nil))
+
+(evil-define-command evil-scroll-page-down-and-center (count)
+  "Scrolls the window COUNT pages upwards."
+  :repeat nil
+  :keep-visual t
+  (interactive "p")
+  (evil-save-column
+    (dotimes (i count)
+      (scroll-up nil)))
+	(evil-scroll-line-to-center nil))
 
 
+(evil-define-motion evil-next-line-and-center (count)
+  "Move the cursor COUNT lines down."
+  :type line
+  (let (line-move-visual)
+		   
+    (evil-line-move (or count 1))
+		(evil-scroll-line-to-center nil)))
+
+(evil-define-motion evil-previous-line-and-center (count)
+  "Move the cursor COUNT lines down."
+  :type line
+  (let (line-move-visual)
+		   
+    (evil-line-move (- (or count 1)))
+		(evil-scroll-line-to-center nil)))
+
+;; (define-key evil-motion-state-map "j" 'evil-next-line-and-center) 
+;; (define-key evil-motion-state-map "k" 'evil-previous-line-and-center) 
+;; (define-key evil-motion-state-map (kbd "C-f") 'evil-scroll-page-down-and-center) 
+;; (define-key evil-motion-state-map (kbd "C-b") 'evil-scroll-page-up-and-center) 
+;; (define-key evil-motion-state-map "k" 'evil-previous-line-and-center) 
 (define-key evil-normal-state-map (kbd "C-e") 'ugm/new-line)
 (define-key evil-insert-state-map (kbd "C-e") 'ugm/new-line)
 
+
+;; center
 
 ;; normal mode key maps
 (define-key evil-normal-state-map "\C-p" 'helm-projectile)
