@@ -15,3 +15,18 @@
       helm-scroll-amount                    8 ; scroll 8 lines other window using M-<next>/M-<prior>
       helm-ff-file-name-history-use-recentf t)
 
+
+(setq helm-ag-base-command "ag --nocolor --nogroup -C 2")
+;(define-key helm-map (kbd "C-j") 'helm-next-line)
+;          (define-key helm-map (kbd "C-k") 'helm-previous-line)
+;          (define-key helm-map (kbd "C-h") 'helm-next-source)
+;          (define-key helm-map (kbd "C-l") 'helm-previous-source)
+(defun helm-hide-minibuffer-maybe ()
+  (when (with-helm-buffer helm-echo-input-in-header-line)
+    (let ((ov (make-overlay (point-min) (point-max) nil nil t)))
+      (overlay-put ov 'window (selected-window))
+      (overlay-put ov 'face (let ((bg-color (face-background 'default nil)))
+                              `(:background ,bg-color :foreground ,bg-color)))
+      (setq-local cursor-type nil))))
+(setq helm-echo-input-in-header-line t)
+(add-hook 'helm-minibuffer-set-up-hook 'helm-hide-minibuffer-maybe)

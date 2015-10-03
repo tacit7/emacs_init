@@ -7,4 +7,3 @@
 ;; =>
 (setq ag-arguments (list "-C 1" "--smart-case" "--nogroup" "--column" "--"))
 (setq ag-highlight-search t)
-

@@ -1,3 +1,4 @@
+;; -*- mode: lisp -*-
 (source gnu)
 (source melpa)
 
@@ -10,7 +11,6 @@
 (depends-on "auto-complete")
 (depends-on "babel")
 (depends-on "bash-completion")
-
 (depends-on "restclient")
 (depends-on "org-bullets")
 (depends-on "powerline")
@@ -35,6 +35,7 @@
 (depends-on "evil")
 (depends-on "evil-jumper")
 (depends-on "evil-leader")
+(depends-on "evil-matchit")
 (depends-on "evil-surround")
 (depends-on "evil-tabs")
 (depends-on "eww-lnum")
@@ -106,6 +107,7 @@
 (depends-on "rubocop")
 (depends-on "ruby-tools")
 (depends-on "robe")
+(depends-on "ranger")
 (depends-on "rspec-mode")
 (depends-on "rvm")
 

@@ -1,23 +1,37 @@
 (add-to-list 'auto-mode-alist '("\\.org\\'" . org-mode))
 (global-set-key "\C-cl" 'org-store-link)
 (global-set-key "\C-ca" 'org-agenda)
+(setq org-agenda-files (directory-files "~/uriel-repo/notes/agendas/") )
 (setq org-directory "~/repo/org-mode")
 (setq org-log-done 'time) ; timestamp for Todos when done
-(org-display-inline-images t t)
+(setq org-plantuml-jar-path "~/uriel-repo/emacs/scripts/plantuml.jar")
+;; (org-display-inline-images t t)
 (eval-after-load "org"
   '(require 'ox-md nil t))
-
+(setq org-confirm-babel-evaluate nil)
+(setq org-fontify-whole-heading-line t)
+(setq org-startup-with-inline-images t)
+(defun ugm/org-execute-and-display()
+	"Evaluate a babel org block and display image.
+This is specifically for plantuml."
+	(interactive)
+	(org-babel-execute-maybe)
+	(org-display-inline-images))
+;; So we can clock tasks
+     (setq org-clock-persist 'history)
+     (org-clock-persistence-insinuate)
+;; Clock into drawer
+(setq org-clock-into-drawer t)
 (setq org-ellipsis " ▾")
 (setq org-todo-keywords
       '((sequence "TODO(t)"  "BLOCKED BY" "BLOCKING TO"  "|" "DONE(d)")
 	(sequence "Sprint" "Delayed" "|" "Done")
 	(sequence "Open" "In Progress" "Code Review" "Resloved [QA Ready]" "QA Complete" "Closed")
-	(sequence "Uriel"  "TJ" "Tiffany" "JR(j)" "Conor(c)" "Ryan (r)" "Rohan" "Aaron (a)" "Kevin(k)" "Dave (d)" "David (h)" "|" "DONE(d)")))
+	(sequence "Uriel"  "Zach" "Juan" "Hal" "Heath" "Chase" "Dev" "|" "DONE(d)" "Unneeded")))
 
 (setq org-export-publishing-directory "./exports")
 (setq org-startup-indented t)
 (auto-fill-mode 1)
-(setq org-agenda-files (list "~/repo/org-mode/"))
 (setq org-src-fontify-natively t); make code blocks pretty
 (setq  org-hide-leading-stars t)
 					; Some initial langauges we want org-babel to support
@@ -26,6 +40,7 @@
  '(
    (ruby . t)
    (js . t)
+	 (plantuml . t)
    (octave . t)
    ))
 (setq-default fill-column 80)
@@ -37,6 +52,10 @@
 (setq org-export-with-sub-superscripts nil)
 
 
+(defun ugm/go-to-pull-request-number (pull-requset-id)
+	"Giver a number at point, go to the pull requset with numbet PULL-REQUEST-ID."
+	
+		("https://github.com/SocialCentiv/api-socialcentiv-com/pull"))
 (require 'org-bullets)
 (add-hook 'org-mode-hook (lambda () (org-bullets-mode 1)))
 
@@ -48,6 +67,11 @@
   (end-of-line)
   (insert (concat "  :" current-sprint ":"))
   (org-set-tags-command t))
+
+(defun ugm/org-insert-checkbox ()
+	"Insert an \"org-mode\" check box."
+	(interactive)
+	(insert "- [ ] "))
 
 (defun phab-ticket-link (ticket-number)
   "Create an Org-Todo with a link to the ticket on code review."
@@ -106,7 +130,7 @@
 (defun tacit7/org-link (file desc)
   (concat "[[" file "][" desc "]]"))
 
-(setq org-agenda-span 'month)
+(global-set-key (kbd "C-x g") 'magit-status)
 
 
 ;;; Phabbricator
@@ -121,10 +145,6 @@
 	 (files-and-dirs (directory-files path :show-full-path exclude-dot-dirs-regex))
 	 (dirs ((-select 'tacit7/is-directory-p files-and-dirs))))
     dirs))
-
-(defun ugm/go-to-notes ()
-  (find-file "/Users/umaldonado/repo/org-mode"))
-
 
 ;; ====================
 ;; insert date and time
@@ -154,6 +174,11 @@ Uses `current-date-time-format' for the formatting the date/time."
        (insert "\n")
        )
 (defalias 'ugm/insert-timestamp 'ugm/insert-current-time)
+(setq org-agenda-custom-commands
+      '(("gm" "Calendar" agenda ""
+         ((org-agenda-ndays -60)
+          (org-agenda-start-on-weekday 0)))))
+
 
 (defun ugm/org-insert-code-source (lang)
 	(interactive "sLanguage: ")
@@ -161,8 +186,31 @@ Uses `current-date-time-format' for the formatting the date/time."
 	(insert lang)
 	(insert " \n")
 	(insert "#+END_SRC "))
+
+(defun ugm/org-insert-uml (project file-name)
+	(interactive "sProject: \nsName: ")
+	(insert "#+BEGIN_SRC plantuml :file ./img/" project  "/" file-name)
+	(insert " \n")
+	(insert "#+END_SRC "))
+;http://ergoemacs.org/emacs/elisp_idioms_prompting_input.html
+(defun ugm/social-centiv-task (task priority effort)
+	"Insert a task."
+	(interactive
+	 (list
+		(read-string "Task Name: ")
+		(completing-read "Priority: " '("A" "B" "C"))
+		(completing-read "Effort: " '("0" "0:10" "0:20" "0:30" "1:00" "2:00" "4:00" "6:00" "8:00"))))
+	(insert
+	 "* TODO [#"priority"] " task "\n"
+		":LOGBOOK:\n"
+		":END:\n"
+		":PROPERTIES:\n"
+		":Effort: " effort "\n"
+		":END:"))
+(setq org-confirm-babel-evaluate nil)
 (global-set-key "\C-x\C-d" 'insert-current-date-time)
 (global-set-key "\C-x\C-t" 'insert-current-time)
+(add-to-list 'org-file-apps '(directory . emacs)); use emacs to open directries
 ;; (defvar tacit7/journal-entry-time (* 30 60))
 ;; (defun tacit7/reminder-journal-entry ()
 ;;   "Remind me to enter in the jouRnal what ive done in the past thirty minutes"

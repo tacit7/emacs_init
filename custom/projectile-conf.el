@@ -9,7 +9,7 @@
 (setq projectile-completion-system 'helm)
 (setq helm-projectile-sources-list '(helm-source-projectile-projects
                                      helm-source-projectile-files-list))
-
+(setq projectile-indexing-method 'alien)
 
 (defun ugm/project-geoforce ()
   (interactive)

@@ -86,4 +86,23 @@
     (compile (format "ruby -Ilib:test -I%s/test %s" root-dir (expand-file-name (buffer-file-name))))))
 
 
+(defun projectile-rails-find-api ()
+  (interactive)
+  (projectile-rails-find-resource
+   "api: "
+   '(("app/controllers/api/" "api/\\(.+\\)\\.rb$"))
+   "app/controllers/api//${filename}.rb"))
 ;;; ruby-conf.el ends here
+(defun projectile-rails-find-services ()
+  (interactive)
+  (projectile-rails-find-resource
+   "service: "
+   '(("app/services/" "/services/\\(.+\\)\\.rb$"))
+   "app/services/${filename}.rb"))
+
+(defun projectile-rails-find-serializers ()
+  (interactive)
+  (projectile-rails-find-resource
+   "Serializer: "
+   '(("app/serializers/" "/serializers/\\(.+\\)\\.rb$"))
+   "app/serializers/${filename}.rb"))
