@@ -44,17 +44,32 @@
 	"List all the notes that you have."
 	(ugm/remove-dot-dirs (directory-files "~/uriel-repo/notes/")))
 
+(defun ugm/list-conf-files ()
+	"List all the notes that you have."
+	(ugm/remove-dot-dirs (directory-files "~/.emacs.d/custom/")))
+
 (setq helm-notes-source
 			`((name . "Notes")
 				(candidates . (lambda () (ugm/list-notes) ))
 				(action . (("Switch to notes " . (lambda (candidate) (find-file (concat "~/uriel-repo/notes/" candidate))))
 									 ))))
+
+(setq helm-conf-files-source
+			`((name . "Emacs Config Files")
+				(candidates . (lambda () (ugm/list-conf-files) ))
+				(action . (("Switch to notes " . (lambda (candidate) (find-file (concat "~/emacs.d/custom/" candidate))))
+									 ))))
+
 (defvar fallback-notes-source '((name . "Notes create")
 																(dummy)
 																(action . (("Create Note" . (lambda (candidate) (find-file (concat "~/uriel-repo/notes/" candidate))))))))
 (defun helm-list-notes ()
 	(interactive)
 	(helm :sources '(helm-notes-source fallback-notes-source )))
+
+(defun helm-list-conf-files ()
+	(interactive)
+	(helm :sources '(helm-conf-files-source)))
 
 (defvar fallback-persp-source '((name . "Perspecticve create")
 																(dummy)
