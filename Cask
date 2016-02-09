@@ -3,7 +3,8 @@
 (source melpa)
 
  (depends-on "ac-js2")
- (depends-on "ace-jump-mode")
+(depends-on "ace-jump-mode")
+(depends-on "avy")
  (depends-on "ag")
  (depends-on "anaphora")
  (depends-on "arduino-mode")

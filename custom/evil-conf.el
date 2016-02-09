@@ -260,8 +260,6 @@ Repeated invocations toggle between the two most recently open buffers."
 ;; (define-key evil-motion-state-map (kbd "C-f") 'evil-scroll-page-down-and-center) 
 ;; (define-key evil-motion-state-map (kbd "C-b") 'evil-scroll-page-up-and-center) 
 ;; (define-key evil-motion-state-map "k" 'evil-previous-line-and-center) 
-(define-key evil-normal-state-map (kbd "C-e") 'ugm/new-line)
-(define-key evil-insert-state-map (kbd "C-e") 'ugm/new-line)
 
 (defun ugm/forward-center ()
 	(interactive)
@@ -274,9 +272,9 @@ Repeated invocations toggle between the two most recently open buffers."
 ;; center
 
 ;; normal mode key maps
-(define-key evil-normal-state-map (kbd "C-6") 'switch-to-last-buffer)
 (define-key evil-normal-state-map "\C-p" 'helm-projectile)
-(define-key evil-normal-state-map (kbd "s") 'ace-jump-two-chars-mode)
+(define-key evil-normal-state-map (kbd "s") 'avy-goto-word-1)
+(define-key evil-normal-state-map (kbd "S") 'avy-goto-char-2)
 
 (define-key evil-normal-state-map (kbd "gb") 'helm-projectile-switch-to-buffer)
 (define-key evil-normal-state-map (kbd "C-SPC") 'helm-M-x)
@@ -360,9 +358,10 @@ Repeated invocations toggle between the two most recently open buffers."
 	"hr" 'helm-recentf
 	"hd" 'helm-imenu
 	"hn" 'helm-list-notes
-	"ha" 'helm-ag
+	"ha" 'helm-do-ag-project-root
+	"hA" 'helm-do-ag
 	"hb" 'helm-buffers-list
-	"hc" 'ugm/search-custom-emacs-files
+	"hc" 'helm-list-conf-files 
 
 																				; Org
 	"ol" 'org-store-link
