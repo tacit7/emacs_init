@@ -339,7 +339,6 @@ Repeated invocations toggle between the two most recently open buffers."
 	(ruby-send-region (region-beginning) (region-end)))
 ;; Screens
 (global-set-key (kbd "s-t") 'make-frame-command)
-(define-key evil-normal-state-map (kbd "1 t") (other-frame 0))
 
 
 ;;; Naviagtion
