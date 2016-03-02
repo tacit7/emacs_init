@@ -38,6 +38,18 @@
 (yas-global-mode t)
 (persp-mode)
 
+(defun load-file-p (file)
+	"load the file if it exists"
+	(if (file-exists-p file)
+			(load-file file)
+		(message (concat "The file "file" does not exsist."))))
+
+(defun add-to-exec-path-p (file)
+	"load the file if it exists"
+	(if (file-exists-p file)
+			(add-to-list 'exec-path  file)
+		(message (concat "The file "file" does not exsist."))))
+
 ; packages not in melpa
 (load-file "~/uriel-repo/private.el")
 (add-to-list 'custom-theme-load-path "~/uriel-repo/emacs/smyx-theme/")
