@@ -15,6 +15,8 @@
 
 (setq inhibit-startup-screen t)
 (setq initial-buffer-choice "~/uriel-repo/emacs/welcome.org")
+
+(elscreen-start)
 (require 'package)
 (require 'hydra)
 (require 'powerline)
@@ -53,7 +55,6 @@
 (add-to-list 'auto-mode-alist '("\\.yml$" . yaml-mode))
 
 ;; Custom setups
-(elscreen-start)
 
 (load "~/.emacs.d/custom/common-setup.el")
 (load "~/.emacs.d/custom/yasnippet-conf.el")
