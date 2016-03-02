@@ -57,21 +57,23 @@
 (add-to-list 'load-path "~/uriel-repo/emacs/evil-eww-mode/evil-eww.el")
 (add-to-list 'load-path "/Users/urielm/.rvm/gems/ruby-2.2.0/gems/rcodetools-0.8.5.0/")
 (add-to-list 'load-path "~/uriel-repo/emacs/evil-jumper/")
-(add-to-list 'load-path "~/uriel-repo/private/erc.el")
 (add-to-list 'load-path "~/uriel-repo/emacs/rainbow-mode/")
 (add-to-list 'load-path "/usr/local/bin")
 (add-to-list 'load-path "/usr/local/lib/node_modules/")
 
-(add-to-list 'exec-path "/usr/local/Cellar/aspell/0.60.6.1/bin")
-(add-to-list 'exec-path "/usr/local/bin/")
 (add-to-list 'auto-mode-alist '("\\.yml$" . yaml-mode))
+
+(add-to-exec-path-p "/usr/local/Cellar/aspell/0.60.6.1/bin")
+(add-to-exec-path-p "/usr/local/bin/")
+(load-file-p "~/uriel-repo/private/erc.el")
+(load-file-p "~/uriel-repo/private/1kb.el")
 
 ;; Custom setups
 
 (load "~/.emacs.d/custom/common-setup.el")
 (load "~/.emacs.d/custom/yasnippet-conf.el")
 (load "~/.emacs.d/custom/evil-conf.el")
-(load "~/.emacs.d/custom/evil-star.el")
+;(load "~/.emacs.d/custom/evil-star.el")
 (load "~/.emacs.d/custom/helm-conf.el")
 (load "~/uriel-repo/private.el")
 (load "~/.emacs.d/custom/projectile-conf.el")
