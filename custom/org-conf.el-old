@@ -1,48 +1,65 @@
 (add-to-list 'auto-mode-alist '("\\.org\\'" . org-mode))
+;; (global-set-key "\C-cl" 'org-store-link)
+;; (global-set-key "\C-ca" 'org-agenda)
+;; (setq org-agenda-files (directory-files "~/uriel-repo/notes/agendas/") )
 (setq org-directory "~/uriel-repo/notes/")
 (setq org-log-done 'time) ; timestamp for Todos when done
                                         ;(setq org-plantuml-jar-path "~/uriel-repo/emacs/scripts/plantuml.jar")
-;(org-display-inline-images  t)
+ (org-display-inline-images t t)
 (eval-after-load "org"
-  '(require 'ox-md nil t)) ; markdown
-
+  '(require 'ox-md nil t))
 (setq org-confirm-babel-evaluate nil)
 (setq org-fontify-whole-heading-line t)
 (setq org-startup-with-inline-images t)
 
+(defun ugm/org-execute-and-display()
+	"Evaluate a babel org block and display image.
+This is specifically for plantuml."
+	(interactive)
+	(org-babel-execute-maybe)
+	(org-display-inline-images))
 ;; So we can clock tasks
-(setq org-clock-persist 'history)
-(org-clock-persistence-insinuate)
+     ;; (setq org-clock-persist 'history)
+     ;; (org-clock-persistence-insinuate)
+
 (setq org-clock-into-drawer t);; Clock into drawer
 (setq org-ellipsis " ▾")
-(setq org-startup-indented t)
-(auto-fill-mode 1)
-(setq org-src-fontify-natively t); make code blocks pretty
-(setq  org-hide-leading-stars t)
-; Some initial langauges we want org-babel to support
-(setq org-log-done t)
-;; Set to the location of your Org files on your local system
-(setq org-export-with-sub-superscripts nil)
+(setq org-todo-keywords
+      '((sequence "TODO(t)"  "BLOCKED BY" "BLOCKING TO"  "|" "DONE(d)")))
+;; 	(sequence "Sprint" "Delayed" "|" "Done")
+;; 	(sequence "Open" "In Progress" "Code Review" "Resloved [QA Ready]" "QA Complete" "Closed")
+;; 	(sequence "Uriel"  "Zach" "Juan" "Hal" "Heath" "Chase" "Dev" "|" "DONE(d)" "Unneeded")))
+
+;; (setq org-export-publishing-directory "./exports")
+;; (setq org-startup-indented t)
+;; (auto-fill-mode 1)
+;; (setq org-src-fontify-natively t); make code blocks pretty
+;; (setq  org-hide-leading-stars t)
+;; 					; Some initial langauges we want org-babel to support
+;; (org-babel-do-load-languages
+;;  'org-babel-load-languages
+;;  '(
+;;    (ruby . t)
+;;    (js . t)
+;; 	 (plantuml . t)
+;;    (octave . t)
+;;    ))
+;; (setq org-log-done t)
+;; ;; Set to the location of your Org files on your local system
+;; (setq org-export-with-sub-superscripts nil)
 
 
 ;; (defun ugm/go-to-pull-request-number (pull-requset-id)
 ;; 	"Giver a number at point, go to the pull requset with numbet PULL-REQUEST-ID."
 
 ;; 		("https://github.com/SocialCentiv/api-socialcentiv-com/pull"))
-(add-to-load-path "~/uriel-repo/emacs/org-bullets")
- (require 'org-bullets)
- (add-hook 'org-mode-hook (lambda () (org-bullets-mode 1)))
+;; ;; (add-to-load-path "~/uriel-repo/emacs/org-bullets")
+;; ;; (require 'org-bullets)
+;; ;; (add-hook 'org-mode-hook (lambda () (org-bullets-mode 1)))
 
 
+;; (setq current-sprint "sprint020219")
 
-(org-babel-do-load-languages
- 'org-babel-load-languages
- '(
-   (ruby . t)
-   (js . t)
-   (plantuml . t)
-   (octave . t)
-   ))
 ;; (defun tag-with-sprint ()
 ;;   (interactive)
 ;;   (end-of-line)
@@ -53,6 +70,33 @@
   "Insert an \"org-mode\" check box."
   (interactive)
   (insert "- [ ] "))
+
+(defun phab-ticket-link (ticket-number)
+  "Create an Org-Todo with a link to the ticket on code review."
+  (let* ((url (concat "https://codereview.geoforce.net/T" ticket-number)))
+    (tacit7/org-link url ticket-number)))
+
+(defun phab-diff-link (diff-number)
+  "Create a link to the diff on code review."
+  (let* ((url (concat "https://codereview.geoforce.net/D" diff-number)))
+    (tacit7/org-link url (concat "D" diff-number))))
+
+(defun phab-add-diff-link (diff-number)
+  "Add diff link to code review."
+  (interactive "sDiff Number:")
+  (insert (phab-diff-link diff-number)))
+
+(defun phab-add-ticket-todo (ticket-number)
+  (interactive "sTicket Number:")
+  (let* (
+         (org-link (phab-ticket-link ticket-number))
+         (org-todo-line (concat "* Uriel " org-link ))
+         )
+    (insert org-todo-line)
+    (tag-with-sprint)
+    (insert "\n")
+    (insert "Diff: \n")
+    (insert "Files: \n")))
 
 (defun set-mark-t ()
   (interactive)
@@ -145,7 +189,7 @@
 ;; 	(insert " \n")
 ;; (insert "#+END_SRC "))
                                         ;http://ergoemacs.org/emacs/elisp_idioms_prompting_input.html
-(defun ugm/he (task priority effort)
+(defun ugm/social-centiv-task (task priority effort)
   "Insert a task."
   (interactive
    (list
@@ -170,20 +214,3 @@
 ;;   (run-at-time nil 1800 (org-journal-new-entry nil)) )
 ;;;
 
-(setq org-capture-templates
-      '(("n"
-         "Journal Entry"
-         entry (file+datetree "~/uriel-repo/notes/1kb-journal.org")
-         "* %<%I:%M CST> ")
-        ("s"
-         "Journal Entry - Subtask"
-         entry (file+datetree "~/uriel-repo/notes/1kb-journal.org")
-         "****** %<%I:%M CST> ")
-        ("c"
-         "Journal Entry in Current task"
-         entry (file+datetree "~/uriel-repo/notes/1kb-journal.org")
-         "%<%I:%M CST> ")))
-
-
-(add-to-list 'org-structure-template-alist
-             '("srb" "#+BEGIN_SRC ruby :result output :session strangler-console\n?\n#+END_SRC"))

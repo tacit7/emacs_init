@@ -49,10 +49,12 @@
   (setq indent-tabs-mode nil) ; use space instead of tab
   (ugm-setup-indent 2) ; indent 2 spaces width
   )
+
 (ugm-indent-style)
 ;; Use only homerow keys for ace-jump
 ; (setq ace-jump-mode-move-keys '(?a ?s ?d ?f ?g ?h ?j ?k ?l ?A ?S ?D ?F ?G ?H ?J ?K ?L))
 (fset 'yes-or-no-p 'y-or-n-p)
+
 (defun save-buffer-always ()
   "Save the buffer even if it is not modified."
   (interactive)
@@ -86,7 +88,6 @@
   (interactive)
   (run-at-time 0  (* 60 30) 'tacit7/new-journal))
 
-
 ;; source: http://steve.yegge.googlepages.com/my-dot-emacs-file
 (defun rename-file-and-buffer (new-name)
   "Renames both current buffer and file it's visiting to NEW-NAME."
@@ -108,3 +109,59 @@
 (global-set-key (kbd "s-n") (lambda () (interactive) (ugm/new-emacsen)))
 ;; to setup tabs
 ;;;
+
+(defun tacit7-stash-save-and-re-read (stash-name)
+  (interactive "sName for stash:")
+  (magit-stash stash-name)
+  (revert-buffer))
+
+
+
+(setq abbrev-file-name "~/uriel-repo/emacs/emacs_init/abbrev_defs")
+
+;; Candidate as a replacement for `kill-buffer', at least when used interactively.
+;; For example: (define-key global-map [remap kill-buffer] 'kill-buffer-and-its-windows)
+;;
+;; We cannot just redefine `kill-buffer', because some programs count on a
+;; specific other buffer taking the place of the killed buffer (in the window).
+;;;###autoload
+(defun kill-buffer-and-its-windows (buffer)
+  "Kill BUFFER and delete its windows.  Default is `current-buffer'.
+BUFFER may be either a buffer or its name (a string)."
+  (interactive (list (read-buffer "Kill buffer: " (current-buffer) 'existing)))
+  (setq buffer  (get-buffer buffer))
+  (if (buffer-live-p buffer)            ; Kill live buffer only.
+      (let ((wins  (get-buffer-window-list buffer nil t))) ; On all frames.
+        (when (and (buffer-modified-p buffer)
+                   (fboundp '1on1-flash-ding-minibuffer-frame))
+          (1on1-flash-ding-minibuffer-frame t)) ; Defined in `oneonone.el'.
+        (when (kill-buffer buffer)      ; Only delete windows if buffer killed.
+          (dolist (win  wins)           ; (User might keep buffer if modified.)
+            (when (window-live-p win)
+              ;; Ignore error, in particular,
+              ;; "Attempt to delete the sole visible or iconified frame".
+              (condition-case nil (delete-window win) (error nil))))))
+    (when (interactive-p)
+      (error "Cannot kill buffer.  Not a live buffer: `%s'" buffer))))
+
+;(substitute-key-definition 'kill-buffer 'kill-buffer-and-its-windows global-map)
+(global-set-key (kbd "C-x C-b") 'ibuffer)
+
+
+
+;; Weird fix for tramp hangoup
+; https://github.com/bbatsov/prelude/issues/594
+(projectile-global-mode)
+(setq projectile-mode-line " Projectile")
+
+                                        ; Wwe-mode
+(add-to-list 'auto-mode-alist '("\\.phtml\\'" . web-mode))
+(add-to-list 'auto-mode-alist '("\\.tpl\\.php\\'" . web-mode))
+(add-to-list 'auto-mode-alist '("\\.[agj]sp\\'" . web-mode))
+(add-to-list 'auto-mode-alist '("\\.as[cp]x\\'" . web-mode))
+(add-to-list 'auto-mode-alist '("\\.erb\\'" . web-mode))
+(add-to-list 'auto-mode-alist '("\\.mustache\\'" . web-mode))
+(add-to-list 'auto-mode-alist '("\\.djhtml\\'" . web-mode))
+;Match the first line of the file
+(add-to-list 'magic-mode-alist '("<\?php" . php-mode) )
+(add-to-list 'magic-mode-alist '("<?php" . php-mode) )
