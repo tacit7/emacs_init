@@ -59,7 +59,8 @@
   "Save the buffer even if it is not modified."
   (interactive)
   (set-buffer-modified-p t)
-  (save-buffer))
+  (save-buffer)
+  (evil-normal-state))
 
 
 (global-set-key (kbd "s-s") 'save-buffer-always)
@@ -162,6 +163,7 @@ BUFFER may be either a buffer or its name (a string)."
 (add-to-list 'auto-mode-alist '("\\.erb\\'" . web-mode))
 (add-to-list 'auto-mode-alist '("\\.mustache\\'" . web-mode))
 (add-to-list 'auto-mode-alist '("\\.djhtml\\'" . web-mode))
+(add-to-list 'auto-mode-alist '("\\spec.rb\\'" . rspec-mode))
 ;Match the first line of the file
 (add-to-list 'magic-mode-alist '("<\?php" . php-mode) )
 (add-to-list 'magic-mode-alist '("<?php" . php-mode) )

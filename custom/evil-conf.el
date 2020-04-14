@@ -140,8 +140,8 @@ Repeated invocations toggle between the two most recently open buffers."
   (switch-to-buffer (other-buffer (current-buffer) 1)))
 
 					;insert mode key maps
-	(define-key evil-insert-state-map "\C-f" 'sp-forward-slurp-sexp)
-	(define-key evil-insert-state-map "\C-b" 'sp-backward-slurp-sexp)
+	;; (define-key evil-insert-state-map "\C-f" 'sp-forward-slurp-sexp)
+	;; (define-key evil-insert-state-map "\C-b" 'sp-backward-slurp-sexp)
 (add-hook 'yasnippet-minor-mode
 		 (progn 
 	(define-key evil-insert-state-map "\C-k" 'yas/expand)
