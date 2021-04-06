@@ -649,7 +649,8 @@ Repeated invocations toggle between the two most recently open buffers."
 (defun tacit7-switch-to-strangler ()
   (interactive)
   (find-file "~/repo/strangler/strangler.ln.txt")
-    (cd "~/repo/strangler/"))
+  (cd "~/repo/strangler/")
+  (chruby-use-corresponding))
 
   ;;(rvm-activate-corresponding-ruby))
 
@@ -1528,6 +1529,9 @@ Repeated invocations toggle between the two most recently open buffers."
   (interactive)
   (projectile-find-file-in-directory "~/repo/strangler/app/services"))
 
+(defun tacit7-find-config ()
+  (interactive)
+  (projectile-find-file-in-directory "~/repo/strangler/config"))
 
 
 ;;; specs
