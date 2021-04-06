@@ -1,0 +1,72 @@
+ls
+ssh umaldonado@strangler-staging.1000bulbs.com 
+cd /ssh:strangler-staging.1000bulbs.com:/home/strangler/strangler/current/
+cd /ssh:umaldonado@strangler-staging.1000bulbs.com:/home/strangler/strangler/current/
+tail -f log/staging.log
+exit
+ssh umaldonado@staging-strangler.1000bulbs.com:/home/strangler/strangler/current
+ssh umaldonado@strangler-staging.1000bulbs.com:/home/strangler/strangler/current
+ssh umaldonado@strangler-staging.1000bulbs.com
+exit
+ls
+exit
+cd /strangler-staging.1000bulbs.com:/home/strangler/strangler/current/
+sdf
+cd /strangler@strangler-staging.1000bulbs.com:/home/strangler/strangler/current/
+ls
+cd app/
+ls
+ls
+cd helpers/
+ls
+cd ../..
+ls
+ls
+ls
+cd ..
+ls
+ls
+cd current/
+ls
+tail log/staging.log
+alias hgrep 'history | grep'
+hgrep worker
+alias ll 'ls -l $*'
+ll
+find-file app/workers/update_syspro_cost.rb 
+alias ff 'find-file'
+ls
+exit
+cd /umaldonado@moe.1000bulbs.com:/var/apps/
+ls
+alias cd-moe '/umaldonado@moe.1000bulbs.com:/var/apps/'
+exit
+cd
+cds
+alias cds 'cd ~/repo/strangler'
+cds
+exit
+cd
+cd uriel-repo/scripts/
+ls
+cd ..
+ls
+cd bash-scripts/
+ls
+ls
+ff ./start-stranlger-console
+chmod 777 start-stranlger-console 
+start-stranlger-console
+ssh strangler@strangler-staging.1000bulbs.com -t 'source ~/.profile && cd strangler/current/ && RAILS_ENV=staging bundle exec ./bin/rails c'
+exit
+staging-random-prod
+ls
+chmod 777 start-stranlger-console
+chmod 777 staging-product-detail-page-url 
+staging-product-detail-page-url
+staging-product-detail-page-url
+staging-product-detail-page-url 12
+alias start-strangler-console "ssh strangler@strangler-staging.1000bulbs.com -t 'source ~/.profile && cd strangler/current/ && RAILS_ENV=staging bundle exec ./bin/rails c'"
+start-strangler-consolet
+start-strangler-console
+start-strangler-console

@@ -1,6 +1,4 @@
 
-
-
 (defun is-dot-dir-p (file)
   "Check if FILE is . or .."
   (-contains? '("." "..") file))				;
@@ -114,7 +112,8 @@
   (setq current-spec (buffer-file-name) )
   (call-interactively #'tacit7-watch-file))
 
-
+(defun run-spec-in-terminal ()
+  (send-to-iterm (concat "rspec " current-spec)))
 
 (setq tacit7-watched-files nil)
 (defun tacit7-watch-file ()
@@ -124,7 +123,7 @@
 (defun rspec-run-current-spec-if-current-buffer-is-watched ()
   (if (-contains? tacit7-watched-files (buffer-file-name))
         (save-window-excursion
-          (rspec-compile current-spec ))))
+          (run-spec-in-terminal))))
 
 (defun rspec-notify-failure (buffer msg)
 
@@ -210,6 +209,28 @@
 
 (defun ido-persp-switch ()
   (persp-switch (ido-persp-select)))
+
+(defun tacit7-insert-trail ()
+  "Insert trail."
+  (interactive)
+  (save-excursion
+    (evil-open-below 1)
+    (insert "puts \"\t\\n\\n\\n\\n \\033[1;31m >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>> #{__FILE__}:#{__LINE__} <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<\\n\\n\\n\\n\ \\033[0m\"")
+    (evil-normal-state))
+  (save-buffer))
+
+(defun tacit7-insert-comment-trail (comment)
+  "Insert commenttrail."
+  (interactive "sEnter comment: ")
+  (save-excursion
+    (evil-open-below 1)
+    (insert "puts \"\t\\n\\n\\n\\n \\033[1;31m >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>> #{__FILE__}:#{__LINE__} <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<\\n\\n\\n\\n\ \\033[0m\" \n")
+    (insert comment)
+    (insert "\n")
+    (insert "puts \"\t\\n\\n\\n\\n \\033[1;31m >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>> #{__FILE__}:#{__LINE__} <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<\\n\\n\\n\\n\ \\033[0m\"")
+    (evil-normal-state))
+  (save-buffer))
+
 (defun tacit7-binding-pry ()
   "Insert binging pry and then save the file."
   (interactive)
@@ -254,8 +275,6 @@
   (interactive)
   (find-file "~/.pryrc" ))
 
-(define-key evil-insert-state-map "\C-f" 'sp-forward-slurp-sexp)
-(define-key evil-insert-state-map "\C-b" 'sp-backward-slurp-sexp)
 
 (defun ugm/search-custom-emacs-files ()
   "Switch to a custom emacs file."
@@ -268,9 +287,9 @@
   "Switch to stranger project."
   (interactive)
   (cd "~/repo/strangler/")
-  (rvm-activate-corresponding-ruby)
+  ;; (rvm-activate-corresponding-ruby)
   (strangler-console)
-  (helm-projectile-find-file "~/repo/strangler/"))
+  (find-file "~/repo/strangler/"))
 
 (defun ugm/project-to-eden ()
   "Switch to eden-search project."
@@ -278,11 +297,6 @@
   (cd "~/repo/eden-search/")
   (helm-projectile-find-file "~/repo/eden-search/"))
 
-;; (defun ugm/find-notes ()
-;;   (interactive)
-;;   (setq current-prefix-arg '(4))
-;;   (cd "~/uriel-repo/notes/")
-;;   (helm-projectile-find-file "~/uriel-repo/notes/"))
 
 (defun ugm/find-notes ()
   (interactive)
@@ -323,8 +337,8 @@
 (defun ugm-switch-to-strangler ()
   (interactive)
   (cd "~/repo/strangler/")
-  (find-file "~/repo/strangler/strangler-proj.txt")
-  (rvm-activate-corresponding-ruby))
+  (find-file "~/repo/strangler/strangler.ln.txt"))
+  ;; :(rvm-activate-corresponding-ruby))
 
 (defun ugm-switch-to-strangler-checkout ()
   (interactive)
@@ -488,6 +502,11 @@
   (evil-scroll-up nil)
   (evil-scroll-line-to-center nil))
 
+(defun tacit7-find-next-center ()
+  (interactive)
+  (evil-ex-search-next nil)
+  (evil-scroll-line-to-center nil))
+
 (defun tacit7-inf-ruby-debugging-bindings ()
   (local-set-key (kbd "<f5>") 'tacit7-inf-ruby-send-next) ; add a key
   (local-set-key (kbd "<f6>") 'tacit7-inf-ruby-send-exit) ; add a key
@@ -583,237 +602,6 @@ Repeated invocations toggle between the two most recently open buffers."
     whole-link))
 
 
-;; (defun tacit7-build-youtube-link ()
-;;   (let* ((heading (nth 4 (org-heading-components)))
-;;          (time-string (car (split-string heading " ")))
-;;          (minutes (nth 0 (split-string time-string ":")))
-;;          (seconds (nth 1 (split-string time-string ":")))
-;;          (total   (+ (* 60 (string-to-number minutes)) (string-to-number seconds)))
-;;          (total-string (int-to-string total))
-;;          (youtube-url (org-entry-get nil "youtube" t))
-;;          (whole-link (concat youtube-url"&t="total-string)))
-;;     (message whole-link)
-;;     whole-link))
-;; (defun tacit7-go-to-reddit-link ()
-;;   (interactive)
-;;   (browse-url (tacit7-reddit-link))
-;;   )
-
-;; (defun tacit7-go-to-youtube-at-time ()
-;;   (interactive)
-;;   (browse-url (tacit7-build-youtube-link))
-;;   )
-
-;; (defun org-go-to-youtube-maybe ()
-;;   (if (save-excursion
-;;         (beginning-of-line 1)
-;;         (looking-at "\*\* [0-9][0-9]:[0-9][0-9]"))
-;;       (progn (call-interactively 'tacit7-go-to-youtube-at-time)
-;;              t) ;; to signal that we took action
-;;     nil)) ;; to signal that we did not
-;; (add-hook 'org-ctrl-c-ctrl-c-hook 'org-go-to-youtube-maybe)
-
-;; ;; (defun org-go-to-reddit-maybe ()
-;; ;;   (let* ((subreddit (org-entry-get nil "subreddit" t))
-;; ;;          (reddit-id (org-entry-get nil "reddit-id" t))
-;; ;;          (whole-link (concat "reddit.com/r/"subreddit"/"reddit-id)))
-;; ;;   (if (save-excursion
-;; ;;         (beginning-of-line 1)
-;; ;;         (looking-at "\*\* [0-9]:[0-9][0-9]"))
-;; ;;       (progn (call-interactively 'tacit7-go-to-youtube-at-time)
-;; ;;              t) ;; to signal that we took action
-;; ;;     nil)) ;; to signal that we did not
-;; ;; (add-hook 'org-ctrl-c-ctrl-c-hook 'org-go-to-youtube-maybe)
-
-
-
-;; (defun tacit7-bundle-install ()
-;;   (interactive)
-;;   (let* ((notification-start (mac-term-notify-string "STRANGLER" "Bundle Install"))
-;;          (notification-end (mac-term-notify-string "Apache" "Restarted"))
-;;          (cmd (concat  " cd ~/repo/1000bulbs && docker-compose exec strangler bundle install")))
-;;     (message "Restarting Apache")
-;;     (compile cmd)))
-
-;; (defun tacit7-restart-docker ()
-;;   (interactive)
-;;   (Let* ((cmd (concat  " cd ~/repo/1000bulbs && docker-compose restart")))
-;;         (message "Restarting docker")
-;;         (compile cmd)))
-
-;; ;; (defun tacit7-routes ()
-;; ;;   (interactive)
-;; ;;   (let* ((cmd (concat  " cd ~/repo/1000bulbs && docker-compose exec strangler rake routes")))
-;; ;;     (message "Restarting docker")
-;; ;;     (compile cmd)))
-
-;; (defun tacit7-routes ()
-;;   (interactive)
-;;   (let* ((cmd (concat  " cd ~/repo/strangler &&  rake routes")))
-;;     (message "Restarting docker")
-;;     (compile cmd)))
-
-
-
-;;                                         ; Filter Functions
-
-;; (defun ordinary-insertion-filter (proc string)
-;;   "This is the example filter function from the emacs org."
-;;   (when (buffer-live-p (process-buffer proc))
-;;     (with-current-buffer (process-buffer proc)
-;;       (let ((moving (= (point) (process-mark proc))))
-;;         (save-excursion
-;;           ;; Insert the text, advancing the process marker.
-;;           (goto-char (process-mark proc))
-;;           (insert string)
-;;           (set-marker (process-mark proc) (point)))
-;;         (if moving (goto-char (process-mark proc)))))))
-
-
-
-;; (defun tacit7-pry-nil-out-input (proc string)
-;;   "PRint out something sensible in console"
-
-
-
-;;   )
-
-
-;; (defun start-1kb-docker-env ()
-;;   (interactive)
-;;   (start-process-shell-command
-;;    "StartingDocker"
-;;    "*starting-docker*"
-;;    "cd ~/repo/1000bulbs && docker-compose up -d &&  terminal-notifier -title \"Docker init \" -message \"docker started\" ||  terminal-notifier -title \"docker init \" -message \"docker not worky\"  "))
-
-;; (defun restart-1kb-docker-env ()
-;;   (interactive)
-;;   (start-process-shell-command
-;;    "StartingDocker"
-;;    "*starting-docker*"
-;;    "cd ~/repo/1000bulbs && docker-compose restart &&  terminal-notifier -title \"Docker init \" -message \"docker started\" ||  terminal-notifier -title \"docker init \" -message \"docker not worky\"  "))
-
-;; ;; (defun tacit7-get-current-commit ()
-;; ;;   (cat .git/refs/heads/master))
-
-
-;; ;; https://github.com/1000Bulbs/strangler/blob/269177c8d11e187243c428a8e64ad2100379a1a7/app/forms/product_images_form.rb#L2
-;; ;; (defun staging-rollout-activate ()
-;; ;;   (interactive ))
-
-;; ;;1kb
-
-;; (defun ugm/find-1kb-module ()
-;;   (interactive)
-;;   (counsel-file-jump nil "~/repo/1kb/public_html/inc/modules"))
-;; (defun ugm/find-1kb-module ()
-;;   (interactive)
-;;   (counsel-file-jump nil "~/repo/1kb/public_html/inc/modules"))
-
-;; (defun ugm/find-1kb-class ()
-;;   (interactive)
-;;   (counsel-file-jump nil "~/repo/1kb/public_html/inc/classes"))
-
-;; (defun ugm/find-1kb-views ()
-;;   (interactive)
-;;   (counsel-find-file "~/repo/1kb/public_html/inc/views"))
-;; (defun ugm/search-strangler-views ()
-;;   (interactive)
-;;   (counsel-ag nil "~/repo/strangler/app/views/"))
-
-;; (defun ugm/search-strangler-views ()
-;;   (interactive)
-;;   (counsel-ag nil "~/repo/1kb/public_html/inc/views"))
-;; (defun ugm/find-1kb-js ()
-;;   (interactive)
-;;   (counsel-find-file "~/repo/1kb/public_html/js/"))
-
-;; (defun ugm/find-1kb-test ()
-;;   (interactive)
-;;   (counsel-find-file "~/repo/1kb/tests"))
-
-
-;; (defun evil-normalize-all-buffers ()
-;;   "Force a drop to normal state."
-;;   (unless (eq evil-state 'normal)
-;;     (dolist (buffer (buffer-list))
-;;       (set-buffer buffer)
-;;       (unless (or (minibufferp)
-;;                   (eq evil-state 'emacs))
-;;         (evil-force-normal-state)))
-;;     (message "Dropped back to normal state in all buffers")))
-
-;; (defvar evil-normal-timer
-;;   (run-with-idle-timer 10 t #'evil-normalize-all-buffers)
-;;   "Drop back to normal state after idle for 30 seconds.")
-
-
-;; (defun tacit7-local-file-path-to-docker (file-path)
-;;   (replace-regexp-in-string "\/Users\/"(user-login-name)"\/repo/1000bulbs" "" file-path))
-
-
-;; (defun tacit-7-show-current-file-in-atom ()
-;;   (interactive)
-;;   (shell-command (concat "atom " buffer-file-name)))
-
-;; (defun tacit-7-show-current-file-in-mac-default-app ()
-;;   (interactive)
-;;   (shell-command (concat "open "buffer-file-name)))
-
-
-;; (defun tacit7-run-1kb-spec ()
-;;   (interactive)
-;;   (compile "cd ~/repo/1000bulbs && docker-compose exec 1kb rake test:filter[SupportPhoneNumberTest]"))
-
-;; (defun tacit7-run-all-1kb-spec ()
-;;   (interactive)
-;;   (compile "cd ~/repo/1000bulbs && docker-compose exec 1kb rake test"))
-
-;; (defun tacit7-deploy-strangler-to_staging ()
-;;   "Deploy strangler to staging. Make sure you have jenkins mode setup."
-;;   (interactive)
-;;   (jenkins-job-call-build "deploy-strangler-to-staging"))
-
-
-;; (defun tacit7-translate-to-french ()
-;;   (interactive)
-;;   (move-to-column 45 t)
-;;   (insert (replace-regexp-in-string "\n" "" (shell-command-to-string "trans -brief \"$(pbpaste)\""))))
-
-;; (defun projectile-rails-find-legacy-model ()
-;;   "Find a legacy model."
-;;   (interactive)
-;;   (projectile-rails-find-resource
-;;    "model: "
-;;    '(("app/models/legacy/" "/models/legacy\\(.+\\)\\.rb$"))
-;;    "app/models/legacy_${filename}.rb"))
-
-
-
-;; (defun add-save-hook-pry-send ()
-;;   "Mark the current file to be updated in pry"
-;;   (interactive)
-;;   (add-hook 'after-save-hook 'tacit7-reload-file-in-pry))
-
-
-;; (defun exit-current-console ()
-;;   (interactive)
-;;   (if (equal (buffer-name) "*strangler-production-console*")
-;;       (remove-irbrc-prod))
-;;   (if (equal (buffer-name) "*strangler-staging-console*")
-;;       (remove-irbrc-staging))
-;;   (comint-send-string (get-buffer-process (buffer-name)) "exit\r")
-;;   (sleep-for 0 500)
-;;   (kill-buffer-and-window ))
-
-;; (defun remove-irbrc-prod ()
-;;   (shell-command "ssh strangler@162.242.180.182 'rm /home/strangler/.irbrc'"))
-
-;; (defun remove-irbrc-staging ()
-;;   (shell-command "ssh strangler@50.57.2.155 'rm /home/strangler/.irbrc'"))
-;; (add-hook 'inf-ruby-mode-hook
-;;           (lambda ()
-;;             (local-set-key (kbd "C-x C-x") 'exit-current-console)))
 
 (defun send-pry-and-save ()
   (interactive)
@@ -829,72 +617,6 @@ Repeated invocations toggle between the two most recently open buffers."
   (tacit7-reload-file-in-pry)
   (eyebrowse-switch-to-window-config-9))
 
-;; ; https://emacs.stackexchange.com/questions/9925/persistent-shell-command-history
-
-;; (defun turn-on-comint-history (history-file)
-;;   (setq comint-input-ring-file-name history-file)
-;;   (comint-read-input-ring 'silent))
-
-;; (add-hook 'inf-ruby-mode-hook
-;;           (lambda ()
-;;             (turn-on-comint-history "~/.pry_history")))
-
-;; (add-hook 'kill-buffer-hook #'comint-write-input-ring)
-;; (add-hook 'kill-emacs-hook
-;;           (lambda ()
-;;             (--each (buffer-list)
-;;               (with-current-buffer it (comint-write-input-ring)))))
-
-;; (defun tacit7-edit-private ()
-;;   (interactive)
-;;   (find-file "~/uriel-repo/private/1kb.el"))
-
-;; (defun upload-current-file-to-staging (server)
-;;      (interactive
-;;       (list
-;;        (completing-read "Choose one: " '("strangler@strangler-staging"))))
-
-;;      (let* ((file-name (file-name-nondirectory (buffer-file-name)))
-;;            (command (concat "upload-rb-script "(buffer-file-name)" "server)))
-
-;;        (start-process-shell-command "EmacsUploadScript" "*staging-file-upload*" command)))
-
-;; (defun load-remote-file-to-console (buff)
-;;   (interactive
-;;    (list
-;;     (completing-read "Choose one: " '("*strangler-staging-console*"))))
-
-;;   (let* ((file-name (file-name-nondirectory (buffer-file-name)))
-;;          (command (concat "load 'tmp/" file-name"', false \r")))
-;;     (comint-send-string (get-buffer-process buff) command)))
-
-;; (defun upload-current-file-to-production ()
-;;   (interactive)
-
-;;   (let* ((file-name (file-name-nondirectory (buffer-file-name)))
-;;          (command (concat "upload-rb-script "(buffer-file-name)" strangler@strangler-production")))
-
-;;     (start-process-shell-command "EmacsUploadScript" "*staging-file-upload*" command)))
-
-
-;; (defun ag-counsel-search-views ()
-;;   (interactive)
-;;   (counsel-ag nil "app/views/" nil nil))
-;; (defun load-remote-file-to-production-console ()
-;;   (interactive)
-;;   (let* ((file-name (file-name-nondirectory (buffer-file-name)))
-;;          (command (concat "load 'tmp/" file-name"', false \r")))
-;;     (message command)
-;;     (comint-send-string (get-buffer-process "*strangler-production-console*") command)))
-
-
-;; (defun projectile-rails-find-legacy-model ()
-;;   "Find a legacy model."
-;;   (interactive)
-;;   (projectile-rails-find-resource
-;;    "model: "
-;;    '(("app/models/legacy" "/models/legacy/\\(.+\\)\\.rb$"))
-;;    "app/models/legacy/${filename}.rb"))
 
 (defun kill-rspec-compilation ()
   (if (get-buffer-window "*rspec-compilation*")
@@ -913,26 +635,6 @@ Repeated invocations toggle between the two most recently open buffers."
 (advice-add 'tacit7-strangler-run-current-spec-at-line :before 'kill-rspec-compilation)
 (advice-add 'tacit7-strangler-run-current-spec-at-line :before 'rspec-notify-failure)
 
-
-  ;; "for the use of shell commands"
-  ;; (concat "osascript -e 'display notification \"" message  "\" with Title \"" title "\" -sender \"org.gnu.Emacs\"' & "))
-
-
-;; (defun ugm-branch-deploy ()
-;;   (interactive )
-;;   (let* ((branch (ido-completing-read "Branch Name: " (magit-list-branch-names)))
-;;          (command (concat "staging-deploy " branch)))
-
-;;     (start-process-shell-command "EmacsStagingDeploy" "*staging-deploy*" command)
-;;     (message "Deploying to Staging")))
-
-;; (defun ugm-staging-deploy ()
-;;   (interactive)
-;;   (let*  ((project (tacit7/project-dir-name)))
-;;     (start-process-shell-command "EmacsStagingDeploy" "*staging-deploy*" "staging-deploy staging")
-;;     (message "Deploying to Staging")))
-
-
 (defun tacit7/in-1kb-project-p ()
   (s-equals? (tacit7/project-dir-name) "1kb"))
 
@@ -947,8 +649,8 @@ Repeated invocations toggle between the two most recently open buffers."
 (defun ugm-switch-to-strangler ()
   (interactive)
   (cd "~/repo/strangler/")
-  (find-file "~/repo/strangler/strangler-proj.txt")
-  (rvm-activate-corresponding-ruby))
+  (find-file "~/repo/strangler/strangler.ln.txt"))
+  ;;(rvm-activate-corresponding-ruby))
 
 (defun ugm-switch-to-strangler-checkout ()
   (interactive)
@@ -1557,64 +1259,6 @@ Repeated invocations toggle between the two most recently open buffers."
 
 
 ; https://mads-hartmann.com/2016/05/12/emacs-tree-view.html
-(setq speedbar-supported-extension-expressions '(
-                                                 ".[ch]\\(\\+\\+\\|pp\\|c\\|h\\|xx\\)?"
-                                                 ".tex\\(i\\(nfo\\)?\\)?"
-                                                 ".todo"
-                                                 ".done"
-                                                 ".md"
-                                                 ".rb"
-                                                 ".haml"
-                                                 ".sass"
-                                                 ".el"
-                                                 ".emacs"
-                                                 ".l"
-                                                 ".lsp"
-                                                 ".p"
-                                                 ".java"
-                                                 ".js"
-                                                 ".f\\(90\\|77\\|or\\)?"
-                                                 ".ad[abs]"
-                                                 ".p[lm]"
-                                                 ".tcl"
-                                                 ".m"
-                                                 ".scm"
-                                                 ".pm"
-                                                 ".py"
-                                                 ".g"
-                                                 "\\.\\(inc\\|php[s345]?\\|phtml\\)"
-                                                 ".s?html"
-                                                 ".ma?k"
-                                                 "[Mm]akefile\\(\\.in\\)?"))
-(setq speedbar-use-images nil)
-(setq speedbar-expand-image-button-alist
-      '(("▶" . ezimage-directory-plus)
-        ("▼" . ezimage-directory-minus)
-        ("< >" . ezimage-directory)
-        ("▶" . ezimage-page-plus)
-        ("▼" . ezimage-page-minus)
-        ("?" . ezimage-page)
-        ("8" . ezimage-page)
-        ("[+]" . ezimage-box-plus)
-        ("[-]" . ezimage-box-minus)
-        ("<M>" . ezimage-mail)
-        ("<d>" . ezimage-document-tag)
-        (" i " . ezimage-info-tag)
-        (" =>" . ezimage-tag)
-        (" +>" . ezimage-tag-gt)
-        (" ->" . ezimage-tag-v)
-        (">"   . ezimage-tag)
-        ("@"   . ezimage-tag-type)
-        ("  @" . ezimage-tag-type)
-        ("*"   . ezimage-checkout)
-        ("#"   . ezimage-object)
-        ("!"   . ezimage-object-out-of-date)
-        ("//"  . ezimage-label)
-        ("%"   . ezimage-lock)
-        ))
-(custom-set-variables
- '(speedbar-show-unknown-files t)
-)
 
 (defun tacit7-get-github-link-at-line ()
   (interactive)
@@ -1723,6 +1367,7 @@ Repeated invocations toggle between the two most recently open buffers."
       (progn
         (magit-fetch remote nil)
         (magit-checkout full-branch-name)))))
+
 (defun save-buffer-always ()
   "Save the buffer even if it is not modified."
   (interactive)
@@ -1731,19 +1376,10 @@ Repeated invocations toggle between the two most recently open buffers."
 
 
 
-(add-hook 'ruby-mode-hook
-          (lambda () (hs-minor-mode)))
-
-(eval-after-load "hideshow"
-  '(add-to-list 'hs-special-modes-alist
-                `(ruby-mode
-                  ,(rx (or "def" "class" "module" "do" "{" "[" "%w(")) ; Block start
-                  ,(rx (or "}" "]" "end"))                       ; Block end
-                  ,(rx (or "#" "=begin"))                        ; Comment start
-                  ruby-forward-sexp nil)))
 
 (defun tacit7-line-number-at-point ()
   (line-number (int-to-string (1+ (count-lines 1 (point))))))
+
 (defun bjm/align-whitespace (start end)
   "Align columns by whitespace"
   (interactive "r")
@@ -1834,6 +1470,45 @@ Repeated invocations toggle between the two most recently open buffers."
   "next tab"
   (eyebrowse-next-window-config ))
 
+(defun tacit7-current-ticket-notes ()
+  (interactive)
+  (find-file-other-frame  "~/current-ticket"))
 
 (defun my-semantic-hook ()
   (imenu-add-to-menubar "TAGS"))
+
+(defun tacit7-find-model ()
+  (interactive)
+  ;(ido-find-file-in-dir "~/repo/strangler/app/models"))
+  (projectile-find-file-in-directory "~/repo/strangler/app/models"))
+
+(defun tacit7-find-model-spec ()
+  (interactive)
+  ;(ido-find-file-in-dir "~/repo/strangler/app/models"))
+  (projectile-find-file-in-directory "~/repo/strangler/spec/models"))
+
+(defun tacit7-find-spec ()
+  (interactive)
+  ;(ido-find-file-in-dir "~/repo/strangler/app/models"))
+  (projectile-find-file-in-directory "~/repo/strangler/spec/"))
+
+(defun tacit7-find-legacy-model ()
+  (interactive)
+  ;(ido-find-file-in-dir "~/repo/strangler/app/models"))
+  (projectile-find-file-in-directory "~/repo/strangler/app/models/legacy"))
+
+(defun tacit7-find-controller ()
+  (interactive)
+  (projectile-find-file-in-directory "~/repo/strangler/app/controllers"))
+
+(defun tacit7-find-legacy-controller ()
+  (interactive)
+  (projectile-find-file-in-directory "~/repo/strangler/app/controllers/legacy"))
+
+(defun tacit7-find-view ()
+  (interactive)
+  (projectile-find-file-in-directory "~/repo/strangler/app/views"))
+
+(defun tacit7-find-service ()
+  (interactive)
+  (projectile-find-file-in-directory "~/repo/strangler/app/services"))

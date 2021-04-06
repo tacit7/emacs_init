@@ -1,0 +1,8 @@
+
+** Fri Mar 11 12:42:57 2016 (      $PT = new Payment_Term($this->_user->terms_code, 'sysp)
+
+      $PT = new Payment_Term($this->_user->terms_code, 'syspro_code');
+
+What does $PT stand for?
+:1kb:
+/Users/uriel781/repo/1kb/public_html/inc/controllers/Checkout_Controller.php

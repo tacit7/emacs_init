@@ -1,0 +1,56 @@
+;; -*- emacs-lisp -*- <16/05/20 11:01:34 /Users/uriel781/.emacs.d/tramp>
+;; Tramp connection history.  Don't change this file.
+;; You can delete it, forcing Tramp to reapply the checks.
+
+((["scp" "umaldonado" "moe.1000bulbs.com" nil nil]
+	 ("locale" "LC_ALL=en_US.utf8")
+	 ("uname" "Linux 3.0.0-17-server")
+	 ("test" "test")
+	 ("remote-path"
+		 ("/bin" "/usr/bin" "/sbin" "/usr/sbin" "/usr/local/bin" "/usr/local/sbin"))
+	 ("remote-shell" "/bin/sh")
+	 ("stat" "\\stat")
+	 ("file-exists" "test -e")
+	 ("id" "/usr/bin/id")
+	 ("gid-string" "umaldonado")
+	 ("readlink" "\\readlink")
+	 ("ls" "/bin/ls --color=never")
+	 ("perl-file-spec" t)
+	 ("perl-cwd-realpath" t)
+	 ("perl" "\\perl")
+	 ("gid-integer" 1008)
+	 ("git" "\\git")
+	 ("~" "/home/umaldonado"))
+	(["scp" "admin" "104.130.100.124" nil nil]
+		("locale" "LC_ALL=en_US.utf8")
+		("uname" "Linux 3.13.0-58-generic")
+		("test" "test")
+		("remote-path"
+			("/bin" "/usr/bin" "/sbin" "/usr/sbin" "/usr/local/bin" "/usr/local/sbin"))
+		("remote-shell" "/bin/sh")
+		("stat" "\\stat")
+		("file-exists" "test -e")
+		("id" "/usr/bin/id")
+		("gid-string" "admin")
+		("readlink" "\\readlink")
+		("ls" "/bin/ls --color=never")
+		("gid-integer" 1003)
+		("perl-file-spec" t)
+		("perl-cwd-realpath" t)
+		("perl" "\\perl")
+		("git" "\\git"))
+	(["scp" "strangler" "strangler-staging.1000bulbs.com" nil nil]
+		("locale" "LC_ALL=en_US.utf8")
+		("uname" "Linux 3.13.0-66-generic")
+		("test" "test")
+		("remote-path"
+			("/bin" "/usr/bin" "/sbin" "/usr/sbin" "/usr/local/bin" "/usr/local/sbin"))
+		("remote-shell" "/bin/sh")
+		("stat" "\\stat")
+		("file-exists" "test -e")
+		("id" "/usr/bin/id")
+		("gid-string" "strangler")
+		("perl-file-spec" t)
+		("perl-cwd-realpath" t)
+		("perl" "\\perl")
+		("git" "\\git")))

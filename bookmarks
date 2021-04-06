@@ -1,0 +1,65 @@
+;;;; Emacs Bookmark Format Version 1 ;;;; -*- coding: utf-8-emacs -*- 
+;;; This format is meant to be slightly human-readable;
+;;; nevertheless, you probably don't want to edit it.
+;;; -*- End Of Bookmark File Format Version Stamp -*-
+((".spacemacs"
+ (filename . "~/.spacemacs")
+ (front-context-string . "(defun dotspacem")
+ (rear-context-string . "g' first.\"\n  )\n\n")
+ (position . 16518))
+("ranger-k"
+ (filename . "~/repo/strangler/spec/models/v2/")
+ (front-context-string . "product_image_sp")
+ (rear-context-string . "2K Jul 23 08:12 ")
+ (position . 184))
+("carbonite-staging"
+ (filename . "/ssh:1kb-staging:/var/apps/1000bulbs.com/current/config/carbonite.yml")
+ (front-context-string . "staging:\n  url: ")
+ (rear-context-string . "LOCALLY\n#\n\n---\n\n")
+ (position . 67))
+("1kb-staging"
+ (filename . "/ssh:1kb-staging:/var/apps/1000bulbs.com/current/")
+ (front-context-string . ".dockerignore\n  ")
+ (rear-context-string . "49 Nov  2 13:23 ")
+ (position . 1713))
+("org-refile-last-stored"
+ (filename . "~/current-ticket")
+ (front-context-string . "** DONE customer")
+ (rear-context-string . "cts is finished\n")
+ (position . 2608))
+("org-capture-last-stored"
+ (filename . "~/uriel-repo/notes/1kb-journal.org")
+ (front-context-string . "**** 09:40 CST T")
+ (rear-context-string . "ex of customers\n")
+ (position . 209))
+("bv config"
+ (filename . "~/repo/strangler/config/bazaarvoice_sdk.yml")
+ (front-context-string . "://display.ugc.b")
+ (rear-context-string . " js_bvapi: https")
+ (position . 170))
+("strangler-production-current"
+ (filename . "/ssh:admin@162.242.180.182:/home/strangler/strangler/current/")
+ (front-context-string . ".bundle\n  -rw-rw")
+ (rear-context-string . "96 Jan 16 08:26 ")
+ (position . 483))
+("strnagler-production-current"
+ (filename . "/ssh:admin@162.242.180.182:/../home/strangler/strangler/current/")
+ (front-context-string . "app\n  -rw-rw-r--")
+ (rear-context-string . "96 Jan 16 08:23 ")
+ (position . 250))
+("strangler-staging-current"
+ (filename . "/ssh:strangler-staging:/../home/strangler/strangler/")
+ (front-context-string . "current -> /home")
+ (rear-context-string . "49 Dec 14 08:21 ")
+ (position . 249))
+("1kb-staging-current"
+ (filename . "/ssh:admin@104.130.100.124:/var/apps/1000bulbs.com/current/")
+ (front-context-string . "bv_downloads\n  -")
+ (rear-context-string . "96 Jan 11 15:55 ")
+ (position . 473))
+("production-1kb-current"
+ (filename . "/ssh:admin@162.242.178.243:/var/apps/1000bulbs.com/current/")
+ (front-context-string . "AllTests.php\n  d")
+ (rear-context-string . "46 Jan 11 17:57 ")
+ (position . 234))
+)

@@ -1,0 +1,27 @@
+;; Emacs-W3 HTTP cookies file
+;; Automatically generated file!!! DO NOT EDIT!!!
+
+(setq url-cookie-storage
+ '((".google.com"
+	 [url-cookie "NID" "79=FL-vcfef7ksO2DfEIJ0rtmhyhB8OP6NqwBTHliwUyfLkx8svmlm7KXOIIpqAAPC4wiHkM1iUrg2Y2h3_2pAwTY3CqXaFeDzxBUhPm2pDWTua3fXQu8uLXQAto6Nlz99r" "19-Nov-2016 19:05:52.00 GMT" "/" ".google.com" nil]
+	 [url-cookie "HttpOnly" nil "19-Nov-2016 19:05:52.00 GMT" "/" ".google.com" nil])
+	(".twitter.com"
+		[url-cookie "guest_id" "v1%3A146377121992366099" "20-May-2018 19:07:00.00 UTC" "/" ".twitter.com" nil])
+	(".reddit.com"
+		[url-cookie "HttpOnly" nil "26 Apr 17 20:29:06 [GMT]" "/" ".reddit.com" nil]
+		[url-cookie "__cfduid" "d3b1b0b06725214a4975efc6e9879f80c1461702546" "26 Apr 17 20:29:06 [GMT]" "/" ".reddit.com" nil]))
+)
+(setq url-cookie-secure-storage
+ '((".github.com"
+	 [url-cookie "logged_in" "no" "Mon, 03 Mar 2036 17:13:48 -0000" "/" ".github.com" t]
+	 [url-cookie "HttpOnly" nil "Mon, 03 Mar 2036 17:13:48 -0000" "/" ".github.com" t])
+	("reddit.com"
+		[url-cookie "loidcreated" "2016-04-26T20%3A29%3A07.902Z" "26-Apr-2018 20:29:07.00 GMT" "/" "reddit.com" t]
+		[url-cookie "Max-Age" "63071999" "26-Apr-2018 20:29:07.00 GMT" "/" "reddit.com" t]
+		[url-cookie "loid" "EA4T9mlL8qEk4YbarI" "26-Apr-2018 20:29:07.00 GMT" "/" "reddit.com" t]))
+)
+
+;; Local Variables:
+;; version-control: never
+;; no-byte-compile: t
+;; End:

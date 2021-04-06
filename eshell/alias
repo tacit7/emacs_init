@@ -1,0 +1,11 @@
+alias start-strangler-console ssh strangler@strangler-staging.1000bulbs.com -t 'source ~/.profile && cd strangler/current/ && RAILS_ENV=staging bundle exec ./bin/rails c'
+alias ff find-file $1
+alias cd-strangler cd /strangler@strangler-staging.1000bulbs.com:/home/strangler/strangler/current
+alias ll ls -l $*
+alias hgrep history | grep
+alias cd-moe /umaldonado@moe.1000bulbs.com:/var/apps/
+alias cds cd ~/repo/strangler
+alias cdl cd $1 && ls 
+alias cd1 cd  ~/repo/1kb
+alias cd-bashscripts cd ~/uriel-repo/bash-scripts
+alias ls-staging-releases cd /admin@104.130.100.124:/var/apps/1000bulbs.com/releases/ &&  ${ls -lh}
