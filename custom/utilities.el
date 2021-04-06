@@ -188,24 +188,24 @@
 
     (compile cmd)))
 
-(defun ugm/persp-names ()
+(defun tacit7/persp-names ()
   (-map
    (lambda (x) (if (stringp x) x ( symbol-name x ) ))
    (persp-names-current-frame-fast-ordered)))
 
-(defun ugm/remove-dot-dirs(dirs)
+(defun tacit7/remove-dot-dirs(dirs)
   (-remove 'is-dot-dir-p dirs))
 
-(defun ugm/list-notes ()
+(defun tacit7/list-notes ()
   "List all the notes that you have."
-  (ugm/remove-dot-dirs (directory-files "~/uriel-repo/notes/")))
+  (tacit7/remove-dot-dirs (directory-files "~/uriel-repo/notes/")))
 
-(defun ugm/list-conf-files ()
+(defun tacit7/list-conf-files ()
   "List all the notes that you have."
-  (ugm/remove-dot-dirs (directory-files "~/.emacs.d/custom/")))
+  (tacit7/remove-dot-dirs (directory-files "~/.emacs.d/custom/")))
 
 (defun ido-persp-select ()
-  (ido-completing-read "Select perspective" (ugm/persp-names)))
+  (ido-completing-read "Select perspective" (tacit7/persp-names)))
 
 (defun ido-persp-switch ()
   (persp-switch (ido-persp-select)))
@@ -276,14 +276,14 @@
   (find-file "~/.pryrc" ))
 
 
-(defun ugm/search-custom-emacs-files ()
+(defun tacit7/search-custom-emacs-files ()
   "Switch to a custom emacs file."
   (interactive)
   (let (old-dir (pwd))
     (helm-find-files nil))
   (cd old-dir))
 
-(defun ugm/project-to-strangler ()
+(defun tacit7/project-to-strangler ()
   "Switch to stranger project."
   (interactive)
   (cd "~/repo/strangler/")
@@ -291,14 +291,14 @@
   (strangler-console)
   (find-file "~/repo/strangler/"))
 
-(defun ugm/project-to-eden ()
+(defun tacit7/project-to-eden ()
   "Switch to eden-search project."
   (interactive)
   (cd "~/repo/eden-search/")
   (helm-projectile-find-file "~/repo/eden-search/"))
 
 
-(defun ugm/find-notes ()
+(defun tacit7/find-notes ()
   (interactive)
   (counsel-file-jump nil "~/uriel-repo/notes"))
 
@@ -314,51 +314,51 @@
   (interactive)
   (find-file "~/repo/strangler/log/development.log"))
 
-(defun ugm/find-custom-file ()
+(defun tacit7/find-custom-file ()
   (interactive)
   (setq current-prefix-arg '(4))
   (cd "~/uriel-repo/emacs_init/")
   (helm-projectile-find-file "~/uriel-repo/emacs-init/custom/"))
 
-(defun ugm/find-agendas ()
+(defun tacit7/find-agendas ()
   (interactive)
   (setq current-prefix-arg '(4))
   (cd "~/uriel-repo/notes/")
   (helm-projectile-find-file "/Users/urielm/uriel-repo/notes/agendas/"))
 
-(defun ugm/edit-1kb-agenda ()
+(defun tacit7/edit-1kb-agenda ()
   (interactive)
   (find-file-other-window "~/uriel-repo/notes/agendas/1kb.txt"))
 
-(defun ugm/edit-1kb-notes ()
+(defun tacit7/edit-1kb-notes ()
   (interactive)
   (find-file "~/uriel-repo/notes/1kb.txt"))
 
-(defun ugm-switch-to-strangler ()
+(defun tacit7-switch-to-strangler ()
   (interactive)
   (cd "~/repo/strangler/")
   (find-file "~/repo/strangler/strangler.ln.txt"))
   ;; :(rvm-activate-corresponding-ruby))
 
-(defun ugm-switch-to-strangler-checkout ()
+(defun tacit7-switch-to-strangler-checkout ()
   (interactive)
   (cd "~/repo/strangler/")
   (find-file "~/repo/strangler/strangler.org")
   (rvm-activate-corresponding-ruby)
   (magit-checkout))
-(defun ugm/edit-gemfile ()
+(defun tacit7/edit-gemfile ()
   (interactive)
   (find-file-other-window (concat (projectile-project-root) "Gemfile")))
 
-(defun ugm/edit-abbrevs ()
+(defun tacit7/edit-abbrevs ()
   (interactive)
   (find-file-other-window "~/.emacs.d/abbrev_defs") "Gemfile")
 
-(defun ugm/read-abbrevs ()
+(defun tacit7/read-abbrevs ()
   (interactive)
   (read-abbrev-file "~/.emacs.d/abbrev_defs"))
 
-(defun ugm/new-line ()
+(defun tacit7/new-line ()
   (interactive)
   (end-of-line)
   (open-line 2)
@@ -367,25 +367,25 @@
   (indent-for-tab-command))
 
 
-(defun ugm/edit-evil ()
+(defun tacit7/edit-evil ()
   (interactive)
   (find-file "~/.emacs.d/custom/evil-conf.el"))
 
-(defun ugm/edit-1kb-journal ()
+(defun tacit7/edit-1kb-journal ()
   (interactive)
   (find-file "~/uriel-repo/notes/1kb-journal.org"))
 
-(defun ugm/edit-smyx ()
+(defun tacit7/edit-smyx ()
   (interactive)
   (find-file "~/uriel-repo/emacs/smac-theme/smac-theme.el"))
 
-(defun ugm/load-smyx ()
+(defun tacit7/load-smyx ()
   (interactive)
   (load-theme 'smac t))
-(defun ugm/edit-init ()
+(defun tacit7/edit-init ()
   (interactive)
   (find-file "~/.emacs.d/init.el"))
-(defun ugm/send-previous-region ()
+(defun tacit7/send-previous-region ()
   "Send previous selected region."
   (interactive)
   (evil-visual-restore)
@@ -492,12 +492,12 @@
   (comint-send-string (get-buffer-process "*strangler-console*") "exit\n"))
 ;;;; Code that is not really used.,
 
-(defun ugm/forward-center ()
+(defun tacit7/forward-center ()
   (interactive)
   (evil-scroll-down nil)
   (evil-scroll-line-to-center nil))
 
-(defun ugm/backward-center ()
+(defun tacit7/backward-center ()
   (interactive)
   (evil-scroll-up nil)
   (evil-scroll-line-to-center nil))
@@ -640,37 +640,39 @@ Repeated invocations toggle between the two most recently open buffers."
 
 (defun tacit7/project-dir-name ()
   (car (last (-reject 's-blank? (split-string (projectile-project-root) "/")))))
-(defun ugm-switch-to-1kb ()
+(defun tacit7-switch-to-1kb ()
   (interactive)
   (cd "~/repo/1kb") ;
   (find-file "~/repo/1kb/1kb-proj.txt")
   (rvm-activate-corresponding-ruby))
 
-(defun ugm-switch-to-strangler ()
+(defun tacit7-switch-to-strangler ()
   (interactive)
-  (cd "~/repo/strangler/")
-  (find-file "~/repo/strangler/strangler.ln.txt"))
+  (find-file "~/repo/strangler/strangler.ln.txt")
+    (cd "~/repo/strangler/"))
+
   ;;(rvm-activate-corresponding-ruby))
 
-(defun ugm-switch-to-strangler-checkout ()
+(defun tacit7-switch-to-strangler-checkout ()
   (interactive)
   (cd "~/repo/strangler/")
   (find-file "~/repo/strangler/strangler.org")
   (rvm-activate-corresponding-ruby)
   (magit-checkout))
-(defun ugm/edit-gemfile ()
+
+(defun tacit7/edit-gemfile ()
   (interactive)
   (find-file-other-window (concat (projectile-project-root) "Gemfile")))
 
-(defun ugm/edit-abbrevs ()
+(defun tacit7/edit-abbrevs ()
   (interactive)
   (find-file-other-window "~/.emacs.d/abbrev_defs") "Gemfile")
 
-(defun ugm/read-abbrevs ()
+(defun tacit7/read-abbrevs ()
   (interactive)
   (read-abbrev-file "~/.emacs.d/abbrev_defs"))
 
-(defun ugm/new-line ()
+(defun tacit7/new-line ()
   (interactive)
   (end-of-line)
   (open-line 2)
@@ -679,25 +681,25 @@ Repeated invocations toggle between the two most recently open buffers."
   (indent-for-tab-command))
 
 
-(defun ugm/edit-evil ()
+(defun tacit7/edit-evil ()
   (interactive)
   (find-file "~/.emacs.d/custom/evil-conf.el"))
 
-(defun ugm/edit-1kb-journal ()
+(defun tacit7/edit-1kb-journal ()
   (interactive)
   (find-file "~/uriel-repo/notes/1kb-journal.org"))
 
-(defun ugm/edit-smyx ()
+(defun tacit7/edit-smyx ()
   (interactive)
   (find-file "~/uriel-repo/emacs/smac-theme/smac-theme.el"))
 
-(defun ugm/load-smyx ()
+(defun tacit7/load-smyx ()
   (interactive)
   (load-theme 'smac t))
-(defun ugm/edit-init ()
+(defun tacit7/edit-init ()
   (interactive)
   (find-file "~/.emacs.d/init.el"))
-(defun ugm/send-previous-region ()
+(defun tacit7/send-previous-region ()
   "Send previous selected region."
   (interactive)
   (evil-visual-restore)
@@ -772,12 +774,12 @@ Repeated invocations toggle between the two most recently open buffers."
   (comint-send-string (get-buffer-process "*strangler-console*") "exit\n"))
 ;;;; Code that is not really used.,
 
-(defun ugm/forward-center ()
+(defun tacit7/forward-center ()
   (interactive)
   (evil-scroll-down nil)
   (evil-scroll-line-to-center nil))
 
-(defun ugm/backward-center ()
+(defun tacit7/backward-center ()
   (interactive)
   (evil-scroll-up nil)
   (evil-scroll-line-to-center nil))
@@ -998,32 +1000,32 @@ Repeated invocations toggle between the two most recently open buffers."
 
 ;;1kb
 
-(defun ugm/find-1kb-module ()
+(defun tacit7/find-1kb-module ()
   (interactive)
   (counsel-file-jump nil "~/repo/1kb/public_html/inc/modules"))
-(defun ugm/find-1kb-module ()
+(defun tacit7/find-1kb-module ()
   (interactive)
   (counsel-file-jump nil "~/repo/1kb/public_html/inc/modules"))
 
-(defun ugm/find-1kb-class ()
+(defun tacit7/find-1kb-class ()
   (interactive)
   (counsel-file-jump nil "~/repo/1kb/public_html/inc/classes"))
 
-(defun ugm/find-1kb-views ()
+(defun tacit7/find-1kb-views ()
   (interactive)
   (counsel-find-file "~/repo/1kb/public_html/inc/views"))
-(defun ugm/search-strangler-views ()
+(defun tacit7/search-strangler-views ()
   (interactive)
   (counsel-ag nil "~/repo/strangler/app/views/"))
 
-(defun ugm/search-strangler-views ()
+(defun tacit7/search-strangler-views ()
   (interactive)
   (counsel-ag nil "~/repo/1kb/public_html/inc/views"))
-(defun ugm/find-1kb-js ()
+(defun tacit7/find-1kb-js ()
   (interactive)
   (counsel-find-file "~/repo/1kb/public_html/js/"))
 
-(defun ugm/find-1kb-test ()
+(defun tacit7/find-1kb-test ()
   (interactive)
   (counsel-find-file "~/repo/1kb/tests"))
 
@@ -1477,6 +1479,13 @@ Repeated invocations toggle between the two most recently open buffers."
 (defun my-semantic-hook ()
   (imenu-add-to-menubar "TAGS"))
 
+
+
+;Rails finders
+(defun tacit7-find-controller ()
+  (interactive)
+  (projectile-find-file-in-directory "~/repo/strangler/app/controllers"))
+
 (defun tacit7-find-model ()
   (interactive)
   ;(ido-find-file-in-dir "~/repo/strangler/app/models"))
@@ -1492,23 +1501,68 @@ Repeated invocations toggle between the two most recently open buffers."
   ;(ido-find-file-in-dir "~/repo/strangler/app/models"))
   (projectile-find-file-in-directory "~/repo/strangler/spec/"))
 
-(defun tacit7-find-legacy-model ()
+(defun tacit7-find-view ()
   (interactive)
-  ;(ido-find-file-in-dir "~/repo/strangler/app/models"))
-  (projectile-find-file-in-directory "~/repo/strangler/app/models/legacy"))
-
-(defun tacit7-find-controller ()
-  (interactive)
-  (projectile-find-file-in-directory "~/repo/strangler/app/controllers"))
+  (projectile-find-file-in-directory "~/repo/strangler/app/views"))
 
 (defun tacit7-find-legacy-controller ()
   (interactive)
   (projectile-find-file-in-directory "~/repo/strangler/app/controllers/legacy"))
 
-(defun tacit7-find-view ()
+(defun tacit7-find-legacy-model ()
   (interactive)
-  (projectile-find-file-in-directory "~/repo/strangler/app/views"))
+  ;(ido-find-file-in-dir "~/repo/strangler/app/models"))
+  (projectile-find-file-in-directory "~/repo/strangler/app/models/legacy"))
+
+(defun tacit7-find-legacy-view ()
+  (interactive)
+  ;(ido-find-file-in-dir "~/repo/strangler/app/models"))
+  (projectile-find-file-in-directory "~/repo/strangler/app/views/legacy"))
+
+(defun tacit7-find-legacy-javascript ()
+  (interactive)
+  ;(ido-find-file-in-dir "~/repo/strangler/app/models"))
+  (projectile-find-file-in-directory "~/repo/strangler/app/assets/javascripts"))
 
 (defun tacit7-find-service ()
   (interactive)
   (projectile-find-file-in-directory "~/repo/strangler/app/services"))
+
+
+
+;;; specs
+(defun tacit7-find-controller-spec()
+  (interactive)
+  (projectile-find-file-in-directory "~/repo/strangler/spec/controllers"))
+
+(defun tacit7-find-model-spec()
+  (interactive)
+  ;(ido-find-file-in-dir "~/repo/strangler/spec/models"))
+  (projectile-find-file-in-directory "~/repo/strangler/spec/models"))
+
+(defun tacit7-find-view-spec()
+  (interactive)
+  (projectile-find-file-in-directory "~/repo/strangler/spec/views"))
+
+(defun tacit7-find-legacy-controller-spec()
+  (interactive)
+  (projectile-find-file-in-directory "~/repo/strangler/spec/controllers/legacy"))
+
+(defun tacit7-find-legacy-model-spec()
+  (interactive)
+  ;(ido-find-file-in-dir "~/repo/strangler/spec/models"))
+  (projectile-find-file-in-directory "~/repo/strangler/spec/models/legacy"))
+
+(defun tacit7-find-legacy-view-spec()
+  (interactive)
+  ;(ido-find-file-in-dir "~/repo/strangler/spec/models"))
+  (projectile-find-file-in-directory "~/repo/strangler/spec/views/legacy"))
+
+(defun tacit7-find-legacy-javascript-spec()
+  (interactive)
+  ;(ido-find-file-in-dir "~/repo/strangler/spec/models"))
+  (projectile-find-file-in-directory "~/repo/strangler/spec/assets/javascripts"))
+
+(defun tacit7-find-service-spec()
+  (interactive)
+  (projectile-find-file-in-directory "~/repo/strangler/spec/services"))
