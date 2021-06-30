@@ -1,4 +1,3 @@
-
 (defun is-dot-dir-p (file)
   "Check if FILE is . or .."
   (-contains? '("." "..") file))				;
@@ -166,9 +165,6 @@
   (interactive)
   (find-file "~/.pryrc" ))
 
-(defun tacit7-edit-zsh-aliases ()
-  "open shell aliases to edit."
-  (find-file "~/uriel-repo/dot/zsh/"))
 (defun tacit7-edit-cask ()
   "Open the cask file"
   (interactive)
@@ -210,6 +206,7 @@
   (helm-projectile-find-file "~/repo/eden-search/"))
 
 
+
 (defun tacit7/find-notes ()
   (interactive)
   (counsel-file-jump nil "~/uriel-repo/notes"))
@@ -248,8 +245,8 @@
 
 (defun tacit7-switch-to-strangler ()
   (interactive)
-  (find-file "~/repo/strangler/strangler.ln.txt")
-  (cd "~/repo/strangler/"))
+  (cd "~/repo/strangler/")
+  (find-file "~/repo/strangler/strangler.ln.txt"))
   ;; :(rvm-activate-corresponding-ruby))
 
 (defun tacit7-switch-to-strangler-checkout ()
@@ -257,7 +254,6 @@
   (cd "~/repo/strangler/")
   (find-file "~/repo/strangler/strangler.org")
   (rvm-activate-corresponding-ruby)
-  (chruby-use-corresponding)
   (magit-checkout))
 (defun tacit7/edit-gemfile ()
   (interactive)
@@ -404,16 +400,13 @@
   "Reload current file in pry.\nSends load function with current file"
   (comint-send-string (get-buffer-process "*strangler-console*") "exit\n"))
 ;;;; Code that is not really used.,
-(defun tacit7-other-window-center ()
-  (interactive)
-  (other-window 1)
-  (evil-scroll-line-to-center))
-(defun tacit7-scroll-down-center ()
+
+(defun tacit7/forward-center ()
   (interactive)
   (evil-scroll-down nil)
   (evil-scroll-line-to-center nil))
 
-(defun tacit7-scroll-up-center ()
+(defun tacit7/backward-center ()
   (interactive)
   (evil-scroll-up nil)
   (evil-scroll-line-to-center nil))
@@ -1164,7 +1157,7 @@ Repeated invocations toggle between the two most recently open buffers."
         (find-file (concat "/ssh:strangler-production:" remote-file-path)))))
 
 
-; https://mads-hartmann.com/2016/05/12/emacs-tree-view.html
+;;https://mads-hartmann.com/2016/05/12/emacs-tree-view.html
 
 (defun tacit7-get-github-link-at-line ()
   (interactive)
@@ -1364,8 +1357,7 @@ Repeated invocations toggle between the two most recently open buffers."
 (defun tacit7-edit-resume ()
   "Edit uriels resume"
   (interactive )
-  (find-file "~/uriel-repo/notes/resume.org")
-  )
+  (find-file "~/uriel-repo/notes/resume.org"))
 
 (setq tacit7-current-notes "~/repo/strangler/strangler-proj.txt")
 (defun tacit7-edit-notes ()
@@ -1383,32 +1375,10 @@ Repeated invocations toggle between the two most recently open buffers."
 (defun my-semantic-hook ()
   (imenu-add-to-menubar "TAGS"))
 
-(defun tacit7-find-corresponding-spec ()
-  (interactive)
-  (let* ((name      (buffer-file-name))
-         (spec-sub-name (s-replace "/app/" "/spec/" name ))
-         (spec-name (s-replace ".rb" "_spec.rb" spec-sub-name )))
-  (find-file spec-name)  ))
 
-(defun tacit7-find-corresponding-file ()
-  (interactive)
-  (let* ((name          (buffer-file-name))
-         (spec-sub-name (s-replace "/spec/" "/app/" name ))
-         (spec-name     (s-replace  "_spec" "" spec-sub-name )))
-    (find-file spec-name)  ))
 
-(defun tacit7-find-alternate-file ()
-  (interactive)
-  (if (s-matches? "/app/" (buffer-file-name))
-      (call-interactively #'tacit7-find-corresponding-spec)
-      (call-interactively #'tacit7-find-corresponding-file))
-
-  (if (s-matches? "/spec/" (buffer-file-name))
-      (message "hello")
-      (call-interactively #'tacit7-find-corresponding-file)))
 
 
 (load "/Users/umaldonado/Dropbox/uriel-repo/emacs/emacs_init/custom/utilities/rails.el")
 (load "/Users/umaldonado/Dropbox/uriel-repo/emacs/emacs_init/custom/utilities/rspec.el")
-
-;;; utilities.el ends here
+;;; tacit7-utilities.el ends here
