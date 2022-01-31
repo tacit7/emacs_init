@@ -124,5 +124,15 @@
   (interactive)
   (projectile-find-file-in-directory "~/repo/strangler/spec/services"))
 
+;;; Hooks
+;;;
+
+(add-hook 'ruby-mode-hook
+          (lambda ()
+            (local-set-key (kbd "C-c C-.") 'tacit7-binding-pry)
+            (local-set-key (kbd "C-x C-x") 'exit-current-console)))
+
+
+
 (provide 'tacitrails)
 ;;; rails.el ends here

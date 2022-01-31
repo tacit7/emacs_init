@@ -152,7 +152,7 @@
   (interactive)
   (save-excursion
     (evil-open-below 1)
-    (insert (concat"require 'pry'; binding.pry # "(buffer-file-name)))
+    (insert (concat"require 'pry'; binding.pry # "(buffer-file-name)" #DELETE"))
     (evil-normal-state))
   (save-buffer))
 
@@ -161,6 +161,11 @@
   (interactive)
   (find-file "~/repo/org-mode/tickets.org"))
 
+(defun tacit7-open-strangler-current-ticket ()
+  "Open the tickets file on org mode."
+  (interactive)
+  (find-file "~/repo/strangler/strangler-notes/current.org"))
+
 (defun e-pryrc ()
   "Open the cask file"
   (interactive)
@@ -168,7 +173,9 @@
 
 (defun tacit7-edit-zsh-aliases ()
   "open shell aliases to edit."
+  (interactive)
   (find-file "~/uriel-repo/dot/zsh/"))
+
 (defun tacit7-edit-cask ()
   "Open the cask file"
   (interactive)
@@ -248,9 +255,10 @@
 
 (defun tacit7-switch-to-strangler ()
   (interactive)
-  (find-file "~/repo/strangler/strangler.ln.txt")
+  (find-file "~/repo/strangler/strangler.proj")
   (cd "~/repo/strangler/"))
-  ;; :(rvm-activate-corresponding-ruby))
+;; (chruby-use-corresponding))
+;; :(rvm-activate-corresponding-ruby))
 
 (defun tacit7-switch-to-strangler-checkout ()
   (interactive)
@@ -307,7 +315,7 @@
 (defun tacit7-go-to-a-random-product ()
   (interactive)
   "Takes you to a random product on your web browser.\n"
-    (comint-send-string (get-buffer-process "*strangler-console*") "random-product-go\n"))
+    (comint-send-string (get-buffer-process "*strangler-console*") "random_product_go\n"))
 
 (defun tacit7-go-to-admin-product (str)
   (interactive "sEnter product id: ")
@@ -413,6 +421,16 @@
   (evil-scroll-down nil)
   (evil-scroll-line-to-center nil))
 
+(defun tacit7-previous-line-center ()
+  (interactive)
+  (evil-previous-line nil)
+  (evil-scroll-line-to-center nil))
+
+(defun tacit7-next-line-center ()
+  (interactive)
+  (evil-next-line nil)
+  (evil-scroll-line-to-center nil))
+
 (defun tacit7-scroll-up-center ()
   (interactive)
   (evil-scroll-up nil)
@@ -449,6 +467,7 @@
 (defun tacit7-transparent ()
   (interactive)
   (tacit7-transparency 93) )
+
 (defun tacit7-mini-todo ()
   "Open an org file for a very breif to do list."
   (interactive)
@@ -515,6 +534,7 @@ Repeated invocations toggle between the two most recently open buffers."
     (save-buffer)))
 
 (defun send-to-inf-ruby-and-go ()
+  "Not used anymore."
   (interactive)
   (save-buffer)
   (tacit7-reload-file-in-pry)
@@ -549,11 +569,6 @@ Repeated invocations toggle between the two most recently open buffers."
   (find-file "~/repo/1kb/1kb-proj.txt")
   (rvm-activate-corresponding-ruby))
 
-(defun tacit7-switch-to-strangler ()
-  (interactive)
-  (find-file "~/repo/strangler/strangler.ln.txt")
-  (cd "~/repo/strangler/")
-  (chruby-use-corresponding))
 
   ;;(rvm-activate-corresponding-ruby))
 
@@ -1018,6 +1033,7 @@ Repeated invocations toggle between the two most recently open buffers."
   (shell-command "ssh strangler@50.57.2.155 'rm /home/strangler/.irbrc'"))
 (add-hook 'inf-ruby-mode-hook
           (lambda ()
+            (local-set-key (kbd "C-x C-.") 'tacit7-binding-pry)
             (local-set-key (kbd "C-x C-x") 'exit-current-console)))
 
 (defun insert-line-below ()
@@ -1100,14 +1116,6 @@ Repeated invocations toggle between the two most recently open buffers."
     (message command)
     (comint-send-string (get-buffer-process "*strangler-production-console*") command)))
 
-
-(defun projectile-rails-find-legacy-model ()
-  "Find a legacy model."
-  (interactive)
-  (projectile-rails-find-resource
-   "model: "
-   '(("app/models/legacy" "/models/legacy/\\(.+\\)\\.rb$"))
-   "app/models/legacy/${filename}.rb"))
 
 (defun kill-rspec-compilation ()
   (if (get-buffer-window "*rspec-compilation*")
@@ -1406,9 +1414,8 @@ Repeated invocations toggle between the two most recently open buffers."
   (if (s-matches? "/spec/" (buffer-file-name))
       (message "hello")
       (call-interactively #'tacit7-find-corresponding-file)))
+(load-file "~/uriel-repo/emacs/emacs_init/custom/utilities/rails.el")
 
-
-(load "/Users/umaldonado/Dropbox/uriel-repo/emacs/emacs_init/custom/utilities/rails.el")
-(load "/Users/umaldonado/Dropbox/uriel-repo/emacs/emacs_init/custom/utilities/rspec.el")
-
-;;; utilities.el ends here
+;;:w
+;;hooks
+;;; utilities.el ends here.

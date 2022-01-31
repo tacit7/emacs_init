@@ -1,4 +1,4 @@
-;;;; Emacs Bookmark Format Version 1 ;;;; -*- coding: utf-8-emacs -*- 
+;;;; Emacs Bookmark Format Version 1 ;;;; -*- coding: utf-8-emacs -*-
 ;;; This format is meant to be slightly human-readable;
 ;;; nevertheless, you probably don't want to edit it.
 ;;; -*- End Of Bookmark File Format Version Stamp -*-
@@ -28,10 +28,10 @@
  (rear-context-string . "cts is finished\n")
  (position . 2608))
 ("org-capture-last-stored"
- (filename . "~/uriel-repo/notes/1kb-journal.org")
- (front-context-string . "**** 09:40 CST T")
- (rear-context-string . "ex of customers\n")
- (position . 209))
+ (filename . "~/Dropbox/uriel-repo/org-roam/20211202025109-kem.org")
+ (front-context-string . "\n\n* Links\nThe Jo")
+ (rear-context-string . "D:\n#+title: Kem\n")
+ (position . 81))
 ("bv config"
  (filename . "~/repo/strangler/config/bazaarvoice_sdk.yml")
  (front-context-string . "://display.ugc.b")

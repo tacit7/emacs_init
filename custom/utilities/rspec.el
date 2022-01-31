@@ -6,14 +6,17 @@
 (defvar current-spec nil
   "Set this var to the current spec that you want to test.")
 
-(defun set-current-spec () "Set the current spec to run."  (interactive) (setq
-current-spec (buffer-file-name) ) (call-interactively #'tacit7-watch-file))
+(defun set-current-spec ()
+  "Set the current spec to run."
+  (interactive)
+  (setq current-spec (buffer-file-name))
+  (call-interactively #'tacit7-watch-file))
 
 (defun run-spec-in-terminal () "Sends the current spec to iterm."
-(send-to-iterm (concat "rspec " current-spec)))
+(send-to-iterm (concat "bundle exec rspec " current-spec)))
 
-(defvar tacit7-watched-files nil "List of files that are being watched for
-      changes.  If any of these files changes, the specs are run.")
+(defvar tacit7-watched-files nil
+  "List of files that are being watched for changes.  If any of these files changes, the specs are run.")
 
 (defun tacit7-watch-file () "Push current file to the watched file list."
 (interactive) (add-to-list 'tacit7-watched-files (buffer-file-name)))
@@ -22,7 +25,8 @@ current-spec (buffer-file-name) ) (call-interactively #'tacit7-watch-file))
   "When a file is saved, this function is run to check if the current file is being watched."
   (if (-contains? tacit7-watched-files (buffer-file-name))
         (save-window-excursion
-          (run-spec-in-terminal))))
+          ;; (run-spec-in-terminal))));; this is a function that uses a bash script to trun in iterm
+          (rspec-run-current-spec))))
 
 (defun rspec-notify-failure (buffer msg)
   "Notify rspec using osx notifications."

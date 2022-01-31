@@ -1,7 +1,11 @@
 (add-to-list 'auto-mode-alist '("\\.org\\'" . org-mode))
 (setq org-directory "~/uriel-repo/notes/")
 (setq org-log-done 'time) ; timestamp for Todos when done
-(setq org-plantuml-jar-path "~/uriel-repo/emacs/scripts/plantuml.jar")
+;; (setq org-plantuml-jar-path "~/uriel-repo/emacs/scripts/plantuml.jar")
+;; (setq plantuml-jar-path "~/uriel-repo/emacs/scripts/plantuml.jar")
+(setq org-plantuml-jar-path "~/Downloads/plantuml-1.2022.0.jar")
+(setq plantuml-jar-path "~/Downloads/plantuml-1.2022.0.jar")
+(setq plantuml-default-exec-mode 'jar)
 (setq org-confirm-babel-evaluate nil)
 (setq org-fontify-whole-heading-line t)
 (setq org-startup-with-inline-images t)
@@ -118,9 +122,19 @@ the kill ring."
   "Format of date to insert with `insert-current-date-time' func
 See help of `format-time-string' for possible replacements")
 
+(defvar current-date-format "%a %b %d %Y"
+  "Format of date to insert with `insert-current-date-time' func
+See help of `format-time-string' for possible replacements")
+
 (defvar current-time-format "%a %H:%M:%S"
   "Format of date to insert with `insert-current-time' func.
 Note the weekly scope of the command's precision.")
+
+(defun tacit7-insert-current-date ()
+  "insert the current date into current buffer.
+Uses `current-date-format' for the formatting the date/time."
+       (interactive)
+       (insert (format-time-string current-date-format (current-time))))
 
 (defun ugm/insert-current-date-time ()
   "insert the current date and time into current buffer.
@@ -138,7 +152,7 @@ Uses `current-date-time-format' for the formatting the date/time."
        (insert (format-time-string current-time-format (current-time)))
        (insert "\n")
        )
-(defalias 'ugm/insert-timestamp 'ugm/insert-current-time)
+(defalias 'tacit7-insert-timestamp 'ugm/insert-current-time)
 (setq org-agenda-custom-commands
       '(("gm" "Calendar" agenda ""
          ((org-agenda-ndays -60)
